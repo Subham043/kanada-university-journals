@@ -58,7 +58,6 @@ $route['translate_uri_dashes'] = FALSE;
 //admin Authentication
 
 $route['login'] = 'Authentication/index'; //login view
-$route['can-login'] = 'Authentication/form_validation'; //check credential exist
 $route['dashboard'] = 'Authentication/enter'; //open dashboard
 
 $route['logout'] = 'Authentication/logout'; //logout
@@ -70,11 +69,7 @@ $route['otp-verification/(:any)']  	= 'Authentication/otp_verication/$1';
 
 $route['forgot-password'] = 'Authentication/forgot_password'; //forgot password email check
 
-$route['reset-password'] = 'Authentication/reset_password'; //forgot password email check
-
-$route['set-password/(:any)'] = 'Authentication/add_pass/$1'; //forgot password email click
-
-$route['update-password'] = 'Authentication/update_pass'; //forgot password email click
+$route['reset-password/(:any)'] = 'Authentication/reset_password/$1'; //forgot password email check
 
 //change password
 

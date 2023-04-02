@@ -35,7 +35,7 @@
                                     <p class="text-muted">Enter the following details to reset password.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form id="loginForm" method="post" action="<?php echo base_url('/reset-password'); ?>">
+                                    <form id="loginForm" method="post" action="<?php echo base_url('/reset-password/'.$user_id); ?>">
                                         <input  autocomplete="off"  type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                                         <div class="mb-3">
                                             <label for="otp" class="form-label">OTP</label>
@@ -107,11 +107,11 @@
             },
             {
             rule: 'minLength',
-            value: 4,
+            value: 6,
             },
             {
             rule: 'maxLength',
-            value: 4,
+            value: 6,
             },
         ])
         .addField('#password', [
