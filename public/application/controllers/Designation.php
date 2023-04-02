@@ -28,7 +28,7 @@ class Designation extends CI_Controller {
 
     public function list()
 	{
-		$data['title'] = 'Designation - Hrudayaspandana';
+		$data['title'] = 'Designation - Kannada University';
 		$data['page_name'] = 'Designation';
 
         $this->load->library('pagination');
@@ -65,7 +65,7 @@ class Designation extends CI_Controller {
 
 	public function create()
 	{
-		$data['title'] = 'Designation - Hrudayaspandana';
+		$data['title'] = 'Designation - Kannada University';
 		$data['page_name'] = 'Designation';
 
         $this->security->xss_clean($_POST);
@@ -89,7 +89,7 @@ class Designation extends CI_Controller {
 	
     public function edit($id)
 	{
-		$data['title'] = 'Designation - Hrudayaspandana';
+		$data['title'] = 'Designation - Kannada University';
 		$data['page_name'] = 'Designation';
 		$data['id'] = $id;
 

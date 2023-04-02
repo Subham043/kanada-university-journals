@@ -28,7 +28,7 @@ class Keyword extends CI_Controller {
 
     public function list()
 	{
-		$data['title'] = 'Keyword - Hrudayaspandana';
+		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
 
         $this->load->library('pagination');
@@ -65,7 +65,7 @@ class Keyword extends CI_Controller {
 
 	public function create()
 	{
-		$data['title'] = 'Keyword - Hrudayaspandana';
+		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
 
         $this->security->xss_clean($_POST);
@@ -89,7 +89,7 @@ class Keyword extends CI_Controller {
 	
     public function edit($id)
 	{
-		$data['title'] = 'Keyword - Hrudayaspandana';
+		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
 		$data['id'] = $id;
 

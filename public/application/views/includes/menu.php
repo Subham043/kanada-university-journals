@@ -34,13 +34,23 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link <?php echo strpos(current_url(),'profile') !== false ? 'active' : ''; ?>" href="<?php echo base_url('profile'); ?>">
-                                    <i class="ri-message-fill"></i> <span data-key="t-widgets">Enquiries</span>
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'designation') !== false ? 'active' : ''; ?>" href="<?php echo base_url('designation/list'); ?>">
+                                    <i class="ri-file-user-fill"></i> <span data-key="t-widgets">Designation</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link <?php echo strpos(current_url(),'profile') !== false ? 'active' : ''; ?>" href="<?php echo base_url('profile'); ?>">
-                                    <i class="ri-building-fill"></i> <span data-key="t-widgets">Projects</span>
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'department') !== false ? 'active' : ''; ?>" href="<?php echo base_url('department/list'); ?>">
+                                    <i class="ri-building-2-fill"></i> <span data-key="t-widgets">Department</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'keyword') !== false ? 'active' : ''; ?>" href="<?php echo base_url('keyword/list'); ?>">
+                                    <i class="ri-file-word-fill"></i> <span data-key="t-widgets">Keyword</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'publisher') !== false ? 'active' : ''; ?>" href="<?php echo base_url('publisher/list'); ?>">
+                                    <i class="ri-article-fill"></i> <span data-key="t-widgets">Publisher</span>
                                 </a>
                             </li>
                             <!-- <li class="nav-item">

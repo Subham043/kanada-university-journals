@@ -28,7 +28,7 @@ class Publisher extends CI_Controller {
 
     public function list()
 	{
-		$data['title'] = 'Publisher - Hrudayaspandana';
+		$data['title'] = 'Publisher - Kannada University';
 		$data['page_name'] = 'Publisher';
 
         $this->load->library('pagination');
@@ -65,7 +65,7 @@ class Publisher extends CI_Controller {
 
 	public function create()
 	{
-		$data['title'] = 'Publisher - Hrudayaspandana';
+		$data['title'] = 'Publisher - Kannada University';
 		$data['page_name'] = 'Publisher';
 
         $this->security->xss_clean($_POST);
@@ -97,7 +97,7 @@ class Publisher extends CI_Controller {
 	
     public function edit($id)
 	{
-		$data['title'] = 'Publisher - Hrudayaspandana';
+		$data['title'] = 'Publisher - Kannada University';
 		$data['page_name'] = 'Publisher';
 		$data['id'] = $id;
 

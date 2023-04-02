@@ -27,7 +27,7 @@ class Account extends CI_Controller {
     **/
 	public function profile()
 	{
-		$data['title'] = 'admin-profile - Hrudayaspandana';
+		$data['title'] = 'Profile - Kannada University';
         $this->session->set_flashdata('tab', 'profile');
         $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
         $this->load->view('pages/auth/profile.php', $data);
@@ -42,7 +42,7 @@ class Account extends CI_Controller {
      */
     public function password_update()
     {
-        $data['title'] = 'admin-profile - Hrudayaspandana';
+        $data['title'] = 'Profile - Kannada University';
 
         $this->security->xss_clean($_POST);
         $this->form_validation->set_rules('crpassword', 'Current Password', 'callback_passwordcheck');
@@ -106,7 +106,7 @@ class Account extends CI_Controller {
      */
     public function profile_update()
     {
-        $data['title'] = 'admin-profile - Hrudayaspandana';
+        $data['title'] = 'Profile - Kannada University';
         $this->security->xss_clean($_POST);
         $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
 
@@ -144,6 +144,22 @@ class Account extends CI_Controller {
             $this->load->view('pages/auth/profile.php', $data);
         }
         
+    }
+
+    /**
+     * logout
+     * @url : logout
+     *
+    **/
+    public function logout()
+    {
+        $session_data = array(
+            'admin_id' => $this->session->userdata('admin_id'),
+        );
+        $this->session->unset_userdata($session_data);
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('logout', 'You are logged out Successfully');
+        redirect('login');
     }
 
 

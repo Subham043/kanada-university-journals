@@ -28,7 +28,7 @@ class Department extends CI_Controller {
 
     public function list()
 	{
-		$data['title'] = 'Department - Hrudayaspandana';
+		$data['title'] = 'Department - Kannada University';
 		$data['page_name'] = 'Department';
 
         $this->load->library('pagination');
@@ -65,7 +65,7 @@ class Department extends CI_Controller {
 
 	public function create()
 	{
-		$data['title'] = 'Department - Hrudayaspandana';
+		$data['title'] = 'Department - Kannada University';
 		$data['page_name'] = 'Department';
 
         $this->security->xss_clean($_POST);
@@ -89,7 +89,7 @@ class Department extends CI_Controller {
 	
     public function edit($id)
 	{
-		$data['title'] = 'Department - Hrudayaspandana';
+		$data['title'] = 'Department - Kannada University';
 		$data['page_name'] = 'Department';
 		$data['id'] = $id;
 

@@ -31,7 +31,7 @@ class Authentication extends CI_Controller {
      **/
 	public function index()
 	{
-        $data['title'] = 'login - Kannada University';
+        $data['title'] = 'Login - Kannada University';
 
         $this->form_validation->set_rules('email', 
         'Email',
@@ -50,7 +50,7 @@ class Authentication extends CI_Controller {
                 }
                 $session_data = array('admin_id' => $id);
                 $this->session->set_userdata($session_data);
-                redirect('dashboard');
+                redirect('profile');
                
             } else {
                 $this->session->set_flashdata('error', 'Invalid Email or Password');
@@ -68,7 +68,7 @@ class Authentication extends CI_Controller {
     **/
 	public function forgot_password()
 	{
-		$data['title'] = 'forgot password - Kannada University';
+		$data['title'] = 'Forgot Password - Kannada University';
 
         $this->form_validation->set_rules(
             'email', 
@@ -117,7 +117,7 @@ class Authentication extends CI_Controller {
     **/
 	public function reset_password($id)
 	{
-		$data['title'] = 'reset password - Kannada University';
+		$data['title'] = 'Reset Password - Kannada University';
         
         $user_id = $this->encryption_url->safe_b64decode($id);
         if($this->m_authentication->checkChangePasswordActive($user_id)==false){
@@ -152,22 +152,6 @@ class Authentication extends CI_Controller {
             $this->load->view('pages/auth/reset-password', $data);
         }
 	}
-
-    /**
-     * logout
-     * @url : logout
-     *
-    **/
-    public function logout()
-    {
-        $session_data = array(
-            'admin_id' => $this->session->userdata('admin_id'),
-        );
-        $this->session->unset_userdata($session_data);
-        $this->session->sess_destroy();
-        $this->session->set_flashdata('logout', 'You are logged out Successfully');
-        redirect('login');
-    }
 
 }
 

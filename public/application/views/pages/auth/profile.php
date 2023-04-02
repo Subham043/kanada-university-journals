@@ -23,7 +23,7 @@
 
                     <div class="position-relative mx-n4 mt-n4">
                         <div class="profile-wid-bg profile-setting-img">
-                            <img src="{{ asset('admin/images/logo.png')}}" class="profile-wid-img" alt="">
+                            <img src="<?php echo base_url('assets/admin/images/logo.png'); ?>" class="profile-wid-img" alt="">
                         </div>
                     </div>
 

@@ -59,7 +59,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'Authentication/index'; //login view
 
-$route['logout'] = 'Authentication/logout'; //logout
 
 $route['otp-verification/(:any)']  	= 'Authentication/otp_verication/$1';
 
@@ -77,6 +76,7 @@ $route['profile'] = 'Account/profile'; //forgot password email click
 
 $route['profile-change'] = 'Account/profile_update'; //forgot password email click
 $route['password-change'] = 'Account/password_update'; //forgot password email click
+$route['logout'] = 'Account/logout'; //logout
 
 //department
 $route['department/create'] = 'Department/create'; //open dashboard
