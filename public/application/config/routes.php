@@ -92,3 +92,8 @@ $route['designation/list/(:any)'] = 'Designation/list/$1'; //open dashboard
 $route['keyword/create'] = 'Keyword/create'; //open dashboard
 $route['keyword/edit/(:any)'] = 'Keyword/edit/$1'; //open dashboard
 $route['keyword/list/(:any)'] = 'Keyword/list/$1'; //open dashboard
+
+//publisher
+$route['publisher/create'] = 'Publisher/create'; //open dashboard
+$route['publisher/edit/(:any)'] = 'Publisher/edit/$1'; //open dashboard
+$route['publisher/list/(:any)'] = 'Publisher/list/$1'; //open dashboard
