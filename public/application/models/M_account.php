@@ -11,11 +11,11 @@ class M_account extends CI_Model {
 	{
 
 		$this->db->where('id', $admin);
-		$query = $this->db->get('admin');
+		$query = $this->db->get('user');
 		if($query->num_rows() > 0)
 		{
 			$this->db->where('id', $admin);
-			$this->db->update('admin',  array('password' =>$npass));
+			$this->db->update('user',  array('password' =>$npass));
 			if ($this->db->affected_rows() > 0)
 			{
 				return true;
@@ -34,14 +34,8 @@ class M_account extends CI_Model {
     public function account($value='')
     {
       $this->db->where('id', $value);
-      $query =  $this->db->get('admin');
-  
-      if ($query->num_rows()>0) 
-      {
-        return $query->row_array();
-      }else{
-        return false;
-      }
+      $query =  $this->db->get('user');
+	  return $query->row();
     }
 
              /**
@@ -49,10 +43,10 @@ class M_account extends CI_Model {
         * @url : update-profile
         *@param : admin uniq id, name phone, date
 		*/
-        public function acupdte($ac_uniq,$acuname,$acphone,$date)
+        public function acupdte($ac_uniq,$name,$email,$phone)
         {
           $this->db->where('id', $ac_uniq);
-          $this->db->update('admin',  array('name' =>$acuname ,'phone'=>$acphone,'updated_date'=>$date ));
+          $this->db->update('user',  array('name' =>$name ,'phone'=>$phone,'email'=>$email ));
           if ($this->db->affected_rows() > 0) 
           {
            return true;

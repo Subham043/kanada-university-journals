@@ -58,7 +58,6 @@ $route['translate_uri_dashes'] = FALSE;
 //admin Authentication
 
 $route['login'] = 'Authentication/index'; //login view
-$route['dashboard'] = 'Authentication/enter'; //open dashboard
 
 $route['logout'] = 'Authentication/logout'; //logout
 
@@ -72,8 +71,10 @@ $route['forgot-password'] = 'Authentication/forgot_password'; //forgot password 
 $route['reset-password/(:any)'] = 'Authentication/reset_password/$1'; //forgot password email check
 
 //change password
+$route['dashboard'] = 'Account/dashboard'; //open dashboard
 
-$route['change-password'] = 'Account/index'; //forgot password email click
+$route['profile'] = 'Account/profile'; //forgot password email click
 
-$route['password/change'] = 'Account/password_validation'; //forgot password email click
+$route['profile-change'] = 'Account/profile_update'; //forgot password email click
+$route['password-change'] = 'Account/password_update'; //forgot password email click
 

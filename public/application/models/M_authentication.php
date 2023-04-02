@@ -57,29 +57,6 @@ class M_authentication extends CI_Model {
         return false;
     }
   }
-
-  public function getDetails($value='')
-  {
-    $query=$this->db->where('verified',1)->get('user');
-    $data['user'] = $query->num_rows();
-    $query=$this->db->get('contact');
-    $data['contact'] = $query->num_rows();
-    $query=$this->db->get('literature');
-    $data['literature'] = $query->num_rows();
-    $query=$this->db->get('subscribe');
-    $data['subscription'] = $query->num_rows();
-    $query=$this->db->get('volunteer');
-    $data['volunteer'] = $query->num_rows();
-    $query=$this->db->select_sum('amount')->where('trust','Sai Mayee Trust')->where('payment_status',1)->get('donation');
-    $data['mayee'] = $query->row();
-    $query=$this->db->select_sum('amount')->where('trust','Sri Sai Meru Mathi Trust')->where('payment_status',1)->get('donation');
-    $data['meru'] = $query->row();
-    $query=$this->db->where('type','manava-seva')->get('events');
-    $data['manava'] = $query->num_rows();
-    $query=$this->db->where('type','madhava-seva')->get('events');
-    $data['madhava'] = $query->num_rows();
-    return $data;
-  }
 }
 
 /* End of file M_authentication.php */

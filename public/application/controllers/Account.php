@@ -7,9 +7,10 @@ class Account extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
+        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Oops you need to be logged in to access the page!'); redirect('login'); }
     
         $this->load->model('m_account');
+        $this->load->library('form_validation');
         header_remove("X-Powered-By"); 
         header("X-Frame-Options: DENY");
         header("X-XSS-Protection: 1; mode=block");
@@ -24,15 +25,12 @@ class Account extends CI_Controller {
      * Admin login-> load view page
      * url : login
     **/
-	public function index()
+	public function profile()
 	{
-		if ($this->session->userdata('admin_id') != '') {
-            $data['title'] = 'admin-profile - Hrudayaspandana';
-            $this->load->view('account/change-password.php', $data);
-        } else {
-            $this->session->set_flashdata('error', 'Please login');
-            redirect('admin');
-        }
+		$data['title'] = 'admin-profile - Hrudayaspandana';
+        $this->session->set_flashdata('tab', 'profile');
+        $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
+        $this->load->view('pages/auth/profile.php', $data);
 		
 	}
 
@@ -42,27 +40,31 @@ class Account extends CI_Controller {
      * @url : update/change-password
      * @param : new password,confirm password,userid
      */
-    public function password_validation()
+    public function password_update()
     {
-        // $this->sc_check->limitRequests();
+        $data['title'] = 'admin-profile - Hrudayaspandana';
+
         $this->security->xss_clean($_POST);
         $this->form_validation->set_rules('crpassword', 'Current Password', 'callback_passwordcheck');
         $this->form_validation->set_rules('password', 'New Password', 'required|callback_is_password_strong');
         $this->form_validation->set_rules('cnpassword', 'Confirm Password', 'required|matches[password]');
+        
         if ($this->form_validation->run() == false) {
-            $error = validation_errors();
-            $this->session->set_flashdata('formerror', $error);
-            redirect('change-password');
+            $this->session->set_flashdata('tab', 'password');
+            $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
+            $this->load->view('pages/auth/profile.php', $data);
         } else {
             $crpassword = $this->input->post('crpassword');
             $password =$this->bcrypt->hash_password($this->input->post('password')) ;
             $admin = $this->session->userdata('admin_id');
             if ($this->m_account->changepass($admin, $password, $crpassword)) {
                 $this->session->set_flashdata('success', 'Password updated Successfully');
-                redirect('change-password', 'refresh');
+                $this->session->set_flashdata('tab', 'password');
+                redirect('profile', 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'unable to update your password, New password is matching with the current password!');
-                redirect('change-password', 'refresh');
+                $this->session->set_flashdata('tab', 'password');
+                redirect('profile', 'refresh');
             }
         }
     }
@@ -81,7 +83,7 @@ class Account extends CI_Controller {
     public function passwordcheck($password)
     {
         $this->db->where('id', $this->session->userdata('admin_id'));
-        $result = $this->db->get('admin');
+        $result = $this->db->get('user');
         if ($result->num_rows() > 0) {
             $psw = $result->row_array();
             if ($this->bcrypt->check_password($password, $psw['password'])) {
@@ -98,37 +100,50 @@ class Account extends CI_Controller {
     }
 
     /**
-     *account settings -> load view page
-     * @url : profile
-     */
-    public function accntsttngs()
-    {
-            $data['title'] = 'Account settings - Shaadi Baraati';
-            $admin = $this->session->userdata('admin_id');
-            $data['setting'] = $this->m_account->account($admin);
-            $this->load->view('account/profile.php', $data, false);
-    }
-
-    /**
      *account settings -> Update account
      * @url : update-profile
      *@param : admin uniq id, name phone, date
      */
-    public function updateacnt()
+    public function profile_update()
     {
-        $data['title'] = 'Account settings - Smart Link';
-        $admin = $this->session->userdata('admin_id');
-        
-        $acuname = $this->input->post('username');
-        $acphone = $this->input->post('phone');
-        $date = date('Y-m-d H:i:s');
-        if ($this->m_account->acupdte($admin, $acuname, $acphone, $date)) {
-            $this->session->set_flashdata('success', 'Account updated Successfully');
-            redirect('profile', 'refresh');
-        } else {
-            $this->session->set_flashdata('error', 'Something went wrong please try again!');
-            redirect('profile', 'refresh');
+        $data['title'] = 'admin-profile - Hrudayaspandana';
+        $this->security->xss_clean($_POST);
+        $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
+
+        if($data['admin']->email==$this->input->post('email')){
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[10]|max_length[200]|regex_match[/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix]', array('regex_match' => 'Enter a valid %s'));
+        }else{
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[10]|max_length[200]|is_unique[user.email]|regex_match[/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix]', array('is_unique'=>'This email is already in use','regex_match' => 'Enter a valid %s'));
         }
+        
+        if($data['admin']->phone==$this->input->post('phone')){
+            $this->form_validation->set_rules('phone', 'Phone Number', 'trim|required|min_length[10]|max_length[10]|numeric');
+        }else{
+            $this->form_validation->set_rules('phone', 'Phone Number', 'trim|required|min_length[10]|max_length[10]|numeric|is_unique[user.phone]', array('is_unique'=>'This email is already in use'));
+        }
+
+        $this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-zA-Z][a-zA-Z ]*$/]', array('regex_match' => 'The %s field can only contain letters and spaces')); 
+
+        $admin = $this->session->userdata('admin_id');
+
+        if($this->form_validation->run()){
+            $name = $this->input->post('name');
+            $email = $this->input->post('email');
+            $phone = $this->input->post('phone');
+            if ($this->m_account->acupdte($admin, $name, $email, $phone)) {
+                $this->session->set_flashdata('success', 'Profile updated Successfully');
+                $this->session->set_flashdata('tab', 'profile');
+                redirect('profile', 'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Something went wrong please try again!');
+                $this->session->set_flashdata('tab', 'profile');
+                redirect('profile', 'refresh');
+            }
+        }else{
+            $this->session->set_flashdata('tab', 'profile');
+            $this->load->view('pages/auth/profile.php', $data);
+        }
+        
     }
 
 
