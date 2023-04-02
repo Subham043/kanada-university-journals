@@ -78,3 +78,7 @@ $route['profile'] = 'Account/profile'; //forgot password email click
 $route['profile-change'] = 'Account/profile_update'; //forgot password email click
 $route['password-change'] = 'Account/password_update'; //forgot password email click
 
+//ddepartment
+$route['department/create'] = 'Department/create'; //open dashboard
+$route['department/edit/(:any)'] = 'Department/edit/$1'; //open dashboard
+$route['department/list/(:any)'] = 'Department/list/$1'; //open dashboard
