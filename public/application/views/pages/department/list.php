@@ -53,8 +53,8 @@
                                             <table class="table align-middle table-nowrap" id="customerTable">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th class="sort" data-sort="customer_name">Department Name</th>
-                                                        <th class="sort" data-sort="customer_name">Department Code</th>
+                                                        <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> Name</th>
+                                                        <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> Code</th>
                                                         <th class="sort" data-sort="date">Created Date</th>
                                                         <th class="sort" data-sort="action">Action</th>
                                                     </tr>

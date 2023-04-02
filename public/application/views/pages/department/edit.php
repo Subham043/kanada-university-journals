@@ -31,21 +31,21 @@
                             <form id="countryForm" method="post" action="<?php echo base_url('department/edit/'.$id); ?>" enctype="multipart/form-data">
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Department</h4>
+                                        <h4 class="card-title mb-0 flex-grow-1"><?php echo $page_name; ?></h4>
                                     </div><!-- end card header -->
                                     <div class="card-body">
                                         <div class="live-preview">
                                             <div class="row gy-4">
                                                 <div class="col-xxl-6 col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="code" class="form-label">Department Code</label>
+                                                        <label for="code" class="form-label"><?php echo $page_name; ?> Code</label>
                                                         <input type="text" class="form-control" id="code" name="code" placeholder="Enter department code" value="<?php echo form_error('code') ? set_value('code') : $data->code; ?>">
                                                         <div class="invalid-message"><?php echo form_error('code'); ?></div>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-6 col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="name" class="form-label">Department Name</label>
+                                                        <label for="name" class="form-label"><?php echo $page_name; ?> Name</label>
                                                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter department name" value="<?php echo form_error('name') ? set_value('name') : $data->name; ?>">
                                                         <div class="invalid-message"><?php echo form_error('name'); ?></div>
                                                     </div>
@@ -106,22 +106,22 @@
         validation
             .addField('#code', [{
                     rule: 'required',
-                    errorMessage: 'Department Code is required',
+                    errorMessage: '<?php echo $page_name; ?> Code is required',
                 },
                 {
                     rule: 'customRegexp',
                     value: /^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i,
-                    errorMessage: 'Department Code is invalid',
+                    errorMessage: '<?php echo $page_name; ?> Code is invalid',
                 },
             ])
             .addField('#name', [{
                     rule: 'required',
-                    errorMessage: 'Department Name is required',
+                    errorMessage: '<?php echo $page_name; ?> Name is required',
                 },
                 {
                     rule: 'customRegexp',
                     value: /^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i,
-                    errorMessage: 'Department Name is invalid',
+                    errorMessage: '<?php echo $page_name; ?> Name is invalid',
                 },
             ])
             .onSuccess((event) => {

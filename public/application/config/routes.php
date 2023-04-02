@@ -78,7 +78,17 @@ $route['profile'] = 'Account/profile'; //forgot password email click
 $route['profile-change'] = 'Account/profile_update'; //forgot password email click
 $route['password-change'] = 'Account/password_update'; //forgot password email click
 
-//ddepartment
+//department
 $route['department/create'] = 'Department/create'; //open dashboard
 $route['department/edit/(:any)'] = 'Department/edit/$1'; //open dashboard
 $route['department/list/(:any)'] = 'Department/list/$1'; //open dashboard
+
+//designation
+$route['designation/create'] = 'Designation/create'; //open dashboard
+$route['designation/edit/(:any)'] = 'Designation/edit/$1'; //open dashboard
+$route['designation/list/(:any)'] = 'Designation/list/$1'; //open dashboard
+
+//keyword
+$route['keyword/create'] = 'Keyword/create'; //open dashboard
+$route['keyword/edit/(:any)'] = 'Keyword/edit/$1'; //open dashboard
+$route['keyword/list/(:any)'] = 'Keyword/list/$1'; //open dashboard
