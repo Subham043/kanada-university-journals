@@ -31,6 +31,12 @@ class M_designation extends CI_Model {
 		}
 	}
 
+	public function get_all()
+	{
+		$query = $this->db->get('designation');
+		return $query->result();
+	}
+
 	public function update($id, $data = null)
 	{
 		$this->db->where('id', $id);

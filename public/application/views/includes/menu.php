@@ -53,6 +53,11 @@
                                     <i class="ri-article-fill"></i> <span data-key="t-widgets">Publisher</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'teacher') !== false ? 'active' : ''; ?>" href="<?php echo base_url('teacher/list'); ?>">
+                                    <i class="ri-user-star-fill"></i> <span data-key="t-widgets">Teacher</span>
+                                </a>
+                            </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">

@@ -30,6 +30,12 @@ class M_department extends CI_Model {
 			return false;
 		}
 	}
+	
+	public function get_all()
+	{
+		$query = $this->db->get('department');
+		return $query->result();
+	}
 
 	public function update($id, $data = null)
 	{
