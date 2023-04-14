@@ -112,3 +112,10 @@ $route['conference/store'] = 'Conference/store'; //open dashboard
 $route['conference/edit/(:any)'] = 'Conference/edit/$1'; //open dashboard
 $route['conference/update/(:any)'] = 'Conference/update/$1'; //open dashboard
 $route['conference/list/(:any)'] = 'Conference/list/$1'; //open dashboard
+
+//book-article
+$route['book-article/create'] = 'BookArticle/create'; //open dashboard
+$route['book-article/store'] = 'BookArticle/store'; //open dashboard
+$route['book-article/edit/(:any)'] = 'BookArticle/edit/$1'; //open dashboard
+$route['book-article/update/(:any)'] = 'BookArticle/update/$1'; //open dashboard
+$route['book-article/list/(:any)'] = 'BookArticle/list/$1'; //open dashboard

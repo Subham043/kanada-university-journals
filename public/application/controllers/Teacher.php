@@ -7,7 +7,7 @@ class Teacher extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Oops you need to be logged in to access the page!'); redirect('login'); }
+        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Oops you need to be logged in order to access the page!'); redirect('login'); }
     
         $this->load->model('m_teacher');
         $this->load->library('form_validation');

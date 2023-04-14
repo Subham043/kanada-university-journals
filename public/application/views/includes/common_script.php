@@ -1,6 +1,7 @@
 <script src="<?php echo base_url('assets/admin/js/pages/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/jquery.validation.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/admin/js/pages/jquery.repeater.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/just-validate.production.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/iziToast.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/libs/simplebar/simplebar.min.js'); ?>"></script>
