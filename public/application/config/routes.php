@@ -81,22 +81,26 @@ $route['logout'] = 'Account/logout'; //logout
 //department
 $route['department/create'] = 'Department/create'; //open dashboard
 $route['department/edit/(:any)'] = 'Department/edit/$1'; //open dashboard
+$route['department/list'] = 'Department/list'; //open dashboard
 $route['department/list/(:any)'] = 'Department/list/$1'; //open dashboard
 
 
 //designation
 $route['designation/create'] = 'Designation/create'; //open dashboard
 $route['designation/edit/(:any)'] = 'Designation/edit/$1'; //open dashboard
+$route['designation/list'] = 'Designation/list'; //open dashboard
 $route['designation/list/(:any)'] = 'Designation/list/$1'; //open dashboard
 
 //keyword
 $route['keyword/create'] = 'Keyword/create'; //open dashboard
 $route['keyword/edit/(:any)'] = 'Keyword/edit/$1'; //open dashboard
+$route['keyword/list'] = 'Keyword/list'; //open dashboard
 $route['keyword/list/(:any)'] = 'Keyword/list/$1'; //open dashboard
 
 //publisher
 $route['publisher/create'] = 'Publisher/create'; //open dashboard
 $route['publisher/edit/(:any)'] = 'Publisher/edit/$1'; //open dashboard
+$route['publisher/list'] = 'Publisher/list'; //open dashboard
 $route['publisher/list/(:any)'] = 'Publisher/list/$1'; //open dashboard
 
 //teacher
@@ -104,6 +108,7 @@ $route['teacher/create'] = 'Teacher/create'; //open dashboard
 $route['teacher/store'] = 'Teacher/store'; //open dashboard
 $route['teacher/edit/(:any)'] = 'Teacher/edit/$1'; //open dashboard
 $route['teacher/update/(:any)'] = 'Teacher/update/$1'; //open dashboard
+$route['teacher/list'] = 'Teacher/list'; //open dashboard
 $route['teacher/list/(:any)'] = 'Teacher/list/$1'; //open dashboard
 
 //conference
@@ -111,6 +116,7 @@ $route['conference/create'] = 'Conference/create'; //open dashboard
 $route['conference/store'] = 'Conference/store'; //open dashboard
 $route['conference/edit/(:any)'] = 'Conference/edit/$1'; //open dashboard
 $route['conference/update/(:any)'] = 'Conference/update/$1'; //open dashboard
+$route['conference/list'] = 'Conference/list'; //open dashboard
 $route['conference/list/(:any)'] = 'Conference/list/$1'; //open dashboard
 
 //book-article
@@ -118,4 +124,5 @@ $route['book-article/create'] = 'BookArticle/create'; //open dashboard
 $route['book-article/store'] = 'BookArticle/store'; //open dashboard
 $route['book-article/edit/(:any)'] = 'BookArticle/edit/$1'; //open dashboard
 $route['book-article/update/(:any)'] = 'BookArticle/update/$1'; //open dashboard
+$route['book-article/list'] = 'BookArticle/list'; //open dashboard
 $route['book-article/list/(:any)'] = 'BookArticle/list/$1'; //open dashboard

@@ -38,7 +38,7 @@
                                         <div class="row g-4 mb-3">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="<?php echo base_url('conference/create'); ?>"
+                                                    <a href="<?php echo base_url('book-article/create'); ?>"
                                                         style="background:green;border-color:green;" type="button"
                                                         class="btn btn-success add-btn" id="create-btn"><i
                                                             class="ri-add-line align-bottom me-1"></i> Create</a>
@@ -55,7 +55,8 @@
                                                     <tr>
                                                         <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> Title</th>
                                                         <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> Name</th>
-                                                        <th class="sort" data-sort="customer_name">Date of <?php echo $page_name; ?></th>
+                                                        <th class="sort" data-sort="customer_name">Publish Date of <?php echo $page_name; ?></th>
+                                                        <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> ISBN/ISSN</th>
                                                         <th class="sort" data-sort="date">Created Date</th>
                                                         <th class="sort" data-sort="action">Action</th>
                                                     </tr>
@@ -65,13 +66,14 @@
                                                     <?php foreach($data as $item) { ?>
                                                     <tr>
                                                         <td class="customer_name"><?php echo $item->title; ?></td>
-                                                        <td class="customer_name"><?php echo $item->conference; ?></td>
+                                                        <td class="customer_name"><?php echo $item->name; ?></td>
                                                         <td class="customer_name"><?php echo $item->date; ?></td>
+                                                        <td class="customer_name"><?php echo $item->isbn; ?></td>
                                                         <td class="date"><?php echo $item->timestamp; ?></td>
                                                         <td>
                                                             <div class="d-flex gap-2">
                                                                 <div class="edit">
-                                                                    <a href="<?php echo base_url('conference/edit/'.$this->encryption_url->safe_b64encode($item->id)); ?>"
+                                                                    <a href="<?php echo base_url('book-article/edit/'.$this->encryption_url->safe_b64encode($item->id)); ?>"
                                                                         style="background:yellow;color:black;border-color:yellow;"
                                                                         class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                                 </div>
@@ -79,7 +81,7 @@
                                                                     <button
                                                                         class="btn btn-sm btn-danger remove-item-btn"
                                                                         style="background:red"
-                                                                        onclick="deleteHandler('<?php echo base_url('conference/delete/'.$this->encryption_url->safe_b64encode($item->id)); ?>')">Delete</button>
+                                                                        onclick="deleteHandler('<?php echo base_url('book-article/delete/'.$this->encryption_url->safe_b64encode($item->id)); ?>')">Delete</button>
                                                                 </div>
                                                             </div>
                                                         </td>
