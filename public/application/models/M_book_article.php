@@ -18,6 +18,66 @@ class M_book_article extends CI_Model {
             return false;
         }
 	}
+	
+	public function create_teacher($data = null)
+	{
+		$this->db->insert('book_article_teacher',$data);
+        $insertId = $this->db->insert_id();
+        if ($insertId) {
+            return $insertId;
+        }else{
+            return false;
+        }
+	}
+
+	public function delete_teacher($book_article_id){
+		$this->db->where('book_article_id', $book_article_id)->delete('book_article_teacher');
+	}
+	
+	public function create_add_teacher($data = null)
+	{
+		$this->db->insert('book_article_add_teacher',$data);
+        $insertId = $this->db->insert_id();
+        if ($insertId) {
+            return $insertId;
+        }else{
+            return false;
+        }
+	}
+
+	public function delete_add_teacher($book_article_id){
+		$this->db->where('book_article_id', $book_article_id)->delete('book_article_add_teacher');
+	}
+	
+	public function create_editor($data = null)
+	{
+		$this->db->insert('book_article_editor',$data);
+        $insertId = $this->db->insert_id();
+        if ($insertId) {
+            return $insertId;
+        }else{
+            return false;
+        }
+	}
+
+	public function delete_editor($book_article_id){
+		$this->db->where('book_article_id', $book_article_id)->delete('book_article_editor');
+	}
+	
+	public function create_add_editor($data = null)
+	{
+		$this->db->insert('book_article_add_editor',$data);
+        $insertId = $this->db->insert_id();
+        if ($insertId) {
+            return $insertId;
+        }else{
+            return false;
+        }
+	}
+
+	public function delete_add_editor($book_article_id){
+		$this->db->where('book_article_id', $book_article_id)->delete('book_article_add_editor');
+	}
 
 	public function get_data($id = null)
 	{
