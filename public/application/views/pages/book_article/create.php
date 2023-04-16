@@ -406,7 +406,7 @@
                             }
                         }
 
-                        formData.append('<?php echo $this->security->get_csrf_token_name(); ?>', '<?php echo $this->security->get_csrf_hash(); ?>')
+                        formData.append('<?php echo $this->security->get_csrf_token_name(); ?>', $("input[name='<?php echo $this->security->get_csrf_token_name(); ?>']").val())
                         
                         $.ajax({
                             type: "POST",
@@ -424,6 +424,9 @@
                                     Create
                                     `
                                 submitBtn.disabled = false;
+                                if (response.hasOwnProperty('<?php echo $this->security->get_csrf_token_name(); ?>')) {
+                                    $("input[name='<?php echo $this->security->get_csrf_token_name(); ?>']").val(response['<?php echo $this->security->get_csrf_token_name(); ?>']);
+                                }
                             },
                             error: function (xhr, ajaxOptions, thrownError) {
                                 errorToast(xhr?.responseJSON?.message)
@@ -438,6 +441,9 @@
                                     Create
                                     `
                                 submitBtn.disabled = false;
+                                if (xhr?.responseJSON?.hasOwnProperty('<?php echo $this->security->get_csrf_token_name(); ?>')) {
+                                    $("input[name='<?php echo $this->security->get_csrf_token_name(); ?>']").val(xhr?.responseJSON['<?php echo $this->security->get_csrf_token_name(); ?>']);
+                                }
                             }
                         });
                     }

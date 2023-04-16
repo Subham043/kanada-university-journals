@@ -109,12 +109,13 @@ class BookArticle extends CI_Controller {
                 if(!$this->upload->do_upload('abstract')){
                     return $this->output
                     ->set_content_type('application/json')
-                    ->set_status_header(403)
+                    ->set_status_header(422)
                     ->set_output(json_encode([
                         'message' => 'Validation Error!',
                         'error' => array(
                             'abstract' => $this->upload->display_errors()
                         ),
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }else{
                     $request['abstract'] = $this->upload->data('file_name');
@@ -128,12 +129,13 @@ class BookArticle extends CI_Controller {
                 if(!$this->upload->do_upload('image')){
                     return $this->output
                     ->set_content_type('application/json')
-                    ->set_status_header(403)
+                    ->set_status_header(422)
                     ->set_output(json_encode([
                         'message' => 'Validation Error!',
                         'error' => array(
                             'image' => $this->upload->display_errors()
                         ),
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }else{
                     $request['image'] = $this->upload->data('file_name');
@@ -147,12 +149,13 @@ class BookArticle extends CI_Controller {
                 if(!$this->upload->do_upload('article')){
                     return $this->output
                     ->set_content_type('application/json')
-                    ->set_status_header(403)
+                    ->set_status_header(422)
                     ->set_output(json_encode([
                         'message' => 'Validation Error!',
                         'error' => array(
                             'article' => $this->upload->display_errors()
                         ),
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }else{
                     $request['article'] = $this->upload->data('file_name');
@@ -219,6 +222,7 @@ class BookArticle extends CI_Controller {
                     ->set_status_header(201)
                     ->set_output(json_encode([
                         'message' => 'Book/Article created Successfully',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 } else {
                     return $this->output
@@ -226,12 +230,13 @@ class BookArticle extends CI_Controller {
                     ->set_status_header(405)
                     ->set_output(json_encode([
                         'message' => 'Something went wrong please try again!',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }
             }else{
                 return $this->output
                 ->set_content_type('application/json')
-                ->set_status_header(403)
+                ->set_status_header(422)
                 ->set_output(json_encode([
                     'message' => 'Validation Error!',
                     'error' => array(
@@ -250,6 +255,7 @@ class BookArticle extends CI_Controller {
                         'editor_id[]' => form_error('editor_id[]'),
                         'editor_name[]' => form_error('editor_name[]'),
                     ),
+                    $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                 ]));
             }
         }
@@ -345,12 +351,13 @@ class BookArticle extends CI_Controller {
                     if(!$this->upload->do_upload('image')){
                         return $this->output
                         ->set_content_type('application/json')
-                        ->set_status_header(403)
+                        ->set_status_header(422)
                         ->set_output(json_encode([
                             'message' => 'Validation Error!',
                             'error' => array(
                                 'image' => $this->upload->display_errors()
                             ),
+                            $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                         ]));
                     }else{
                         $path = $_SERVER['DOCUMENT_ROOT'].'/assets/book_article/book/'.$data['data']->image;
@@ -368,12 +375,13 @@ class BookArticle extends CI_Controller {
                     if(!$this->upload->do_upload('abstract')){
                         return $this->output
                         ->set_content_type('application/json')
-                        ->set_status_header(403)
+                        ->set_status_header(422)
                         ->set_output(json_encode([
                             'message' => 'Validation Error!',
                             'error' => array(
                                 'abstract' => $this->upload->display_errors()
                             ),
+                            $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                         ]));
                     }else{
                         $path = $_SERVER['DOCUMENT_ROOT'].'/assets/book_article/abstract/'.$data['data']->abstract;
@@ -391,12 +399,13 @@ class BookArticle extends CI_Controller {
                     if(!$this->upload->do_upload('article')){
                         return $this->output
                         ->set_content_type('application/json')
-                        ->set_status_header(403)
+                        ->set_status_header(422)
                         ->set_output(json_encode([
                             'message' => 'Validation Error!',
                             'error' => array(
                                 'article' => $this->upload->display_errors()
                             ),
+                            $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                         ]));
                     }else{
                         $path = $_SERVER['DOCUMENT_ROOT'].'/assets/book_article/article/'.$data['data']->article;
@@ -466,6 +475,7 @@ class BookArticle extends CI_Controller {
                     ->set_status_header(201)
                     ->set_output(json_encode([
                         'message' => 'Book/Article updated Successfully',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 } else {
                     return $this->output
@@ -473,13 +483,14 @@ class BookArticle extends CI_Controller {
                     ->set_status_header(405)
                     ->set_output(json_encode([
                         'message' => 'Something went wrong please try again!',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }
 
             }else{
                 return $this->output
                 ->set_content_type('application/json')
-                ->set_status_header(403)
+                ->set_status_header(422)
                 ->set_output(json_encode([
                     'message' => 'Validation Error!',
                     'error' => array(
@@ -498,6 +509,7 @@ class BookArticle extends CI_Controller {
                         'editor_id[]' => form_error('editor_id[]'),
                         'editor_name[]' => form_error('editor_name[]'),
                     ),
+                    $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                 ]));
             }
         }

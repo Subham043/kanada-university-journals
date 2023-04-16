@@ -102,11 +102,12 @@ class Teacher extends CI_Controller {
                 if(!$this->upload->do_upload('image')){
                     return $this->output
                     ->set_content_type('application/json')
-                    ->set_status_header(403)
+                    ->set_status_header(422)
                     ->set_output(json_encode([
                         'message' => 'Validation Error!',
                         'error' => array(
-                            'image' => $this->upload->display_errors()
+                            'image' => $this->upload->display_errors(),
+                            $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                         ),
                     ]));
                 }
@@ -131,6 +132,7 @@ class Teacher extends CI_Controller {
                     ->set_status_header(201)
                     ->set_output(json_encode([
                         'message' => 'Teacher created Successfully',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 } else {
                     return $this->output
@@ -138,12 +140,13 @@ class Teacher extends CI_Controller {
                     ->set_status_header(405)
                     ->set_output(json_encode([
                         'message' => 'Something went wrong please try again!',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }
             }else{
                 return $this->output
                 ->set_content_type('application/json')
-                ->set_status_header(403)
+                ->set_status_header(422)
                 ->set_output(json_encode([
                     'message' => 'Validation Error!',
                     'error' => array(
@@ -161,6 +164,7 @@ class Teacher extends CI_Controller {
                         'designation_id' => form_error('designation_id'),
                         'department_id' => form_error('department_id'),
                     ),
+                    $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                 ]));
             }
         }
@@ -251,11 +255,12 @@ class Teacher extends CI_Controller {
                     if(!$this->upload->do_upload('image')){
                         return $this->output
                         ->set_content_type('application/json')
-                        ->set_status_header(403)
+                        ->set_status_header(422)
                         ->set_output(json_encode([
                             'message' => 'Validation Error!',
                             'error' => array(
-                                'image' => $this->upload->display_errors()
+                                'image' => $this->upload->display_errors(),
+                                $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                             ),
                         ]));
                     }else{
@@ -284,6 +289,7 @@ class Teacher extends CI_Controller {
                     ->set_status_header(201)
                     ->set_output(json_encode([
                         'message' => 'Teacher updated Successfully',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 } else {
                     return $this->output
@@ -291,13 +297,14 @@ class Teacher extends CI_Controller {
                     ->set_status_header(405)
                     ->set_output(json_encode([
                         'message' => 'Something went wrong please try again!',
+                        $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                     ]));
                 }
 
             }else{
                 return $this->output
                 ->set_content_type('application/json')
-                ->set_status_header(403)
+                ->set_status_header(422)
                 ->set_output(json_encode([
                     'message' => 'Validation Error!',
                     'error' => array(
@@ -315,6 +322,7 @@ class Teacher extends CI_Controller {
                         'designation_id' => form_error('designation_id'),
                         'department_id' => form_error('department_id'),
                     ),
+                    $this->security->get_csrf_token_name() => $this->security->get_csrf_hash(),
                 ]));
             }
         }
