@@ -167,7 +167,7 @@ class BookArticle extends CI_Controller {
                 $request['publisher_id'] = $this->input->post('publisher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
                 if ($id = $this->m_book_article->create($request)) {
-                    
+
                     $this->m_book_article->delete_teacher($id);
                     foreach($this->input->post('teacher_id') as $data){
                         $this->m_book_article->create_teacher(
@@ -275,11 +275,28 @@ class BookArticle extends CI_Controller {
             $this->session->set_flashdata('error','Sorry you dont have the permission to access this page');
             redirect('404');
         }
-
+        
+        $data['selected_teacher'] = $this->array_pluck( 
+            $this->m_book_article->get_teacher_all($book_article_id), 
+            'teacher_id' 
+        );
+        
+        $data['selected_add_teacher'] = $this->m_book_article->get_add_teacher_all($book_article_id);
+        
+        $data['selected_editor'] = $this->array_pluck( 
+            $this->m_book_article->get_editor_all($book_article_id), 
+            'editor_id' 
+        );
+        
+        $data['selected_add_editor'] = $this->m_book_article->get_add_editor_all($book_article_id);
+        
         $this->load->model('m_teacher');
         $this->load->model('m_keyword');
+        $this->load->model('m_publisher');
         $data['teacher'] = $this->m_teacher->get_all();
+        $data['editor'] = $data['teacher'];
         $data['keyword'] = $this->m_keyword->get_all();
+        $data['publisher'] = $this->m_publisher->get_all();
         $this->load->view('pages/book_article/edit.php', $data);
 
     }
@@ -300,16 +317,22 @@ class BookArticle extends CI_Controller {
             $this->load->library('upload');
 
             $this->security->xss_clean($_POST);
+            $this->form_validation->set_rules('name', 'Book/Article Name', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('title', 'Book/Article Title', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('place', 'Book/Article Place', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('book_article', 'Name of Seminar/Workshop/Book/Articles', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('book', 'Book', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('editor', 'Editor', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('date', 'Date of Seminar/Workshop/Book/Article', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+            $this->form_validation->set_rules('edition', 'Book/Article Edition', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('isbn', 'ISBN/ISSN', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+            $this->form_validation->set_rules('date', 'Date of Seminar/Workshop/Book/Article', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('link', 'Book/Article Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('teacher_id', 'Teacher', 'trim|required|numeric');
+            $this->form_validation->set_rules('publisher_id', 'Teacher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
+            $this->form_validation->set_rules('teacher_id[]', 'Teacher', 'trim|required|numeric');
+            $this->form_validation->set_rules('editor_id[]', 'Editor', 'trim|required|numeric');
+            $this->form_validation->set_rules('editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+            if((!empty($this->input->post('teacher_name[]'))) || (!empty($this->input->post('teacher_email[]'))) || (!empty($this->input->post('teacher_mobile[]')))){
+                $this->form_validation->set_rules('teacher_name[]', 'Teacher Name', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+                $this->form_validation->set_rules('teacher_email[]', 'Teacher Email', 'trim|required|valid_email');
+                $this->form_validation->set_rules('teacher_mobile[]', 'Teacher Mobile', 'trim|required|numeric|min_length[10]|max_length[10]');
+            }
 
             if($this->form_validation->run()){
 
@@ -383,16 +406,61 @@ class BookArticle extends CI_Controller {
                 }
 
                 $request['title'] = $this->input->post('title');
-                $request['place'] = $this->input->post('place');
-                $request['book_article'] = $this->input->post('book_article');
-                $request['book'] = $this->input->post('book');
-                $request['editor'] = $this->input->post('editor');
-                $request['date'] = $this->input->post('date');
+                $request['name'] = $this->input->post('name');
+                $request['edition'] = $this->input->post('edition');
                 $request['isbn'] = $this->input->post('isbn');
+                $request['date'] = $this->input->post('date');
                 $request['link'] = $this->input->post('link');
-                $request['teacher_id'] = $this->input->post('teacher_id');
+                $request['publisher_id'] = $this->input->post('publisher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
                 if ($this->m_book_article->update($book_article_id, $request)!=FALSE) {
+
+                    $this->m_book_article->delete_teacher($book_article_id);
+                    foreach($this->input->post('teacher_id') as $data){
+                        $this->m_book_article->create_teacher(
+                            array(
+                                'teacher_id' => $data,
+                                'book_article_id' => $book_article_id
+                            )
+                        );
+                    }
+
+                    $this->m_book_article->delete_editor($book_article_id);
+                    foreach($this->input->post('editor_id') as $val){
+                        $this->m_book_article->create_editor(
+                            array(
+                                'editor_id' => $val,
+                                'book_article_id' => $book_article_id
+                            )
+                        );
+                    }
+
+                    $this->m_book_article->delete_add_editor($book_article_id);
+                    if(!empty($this->input->post('editor_name'))){
+                        foreach($this->input->post('editor_name') as $val){
+                            $this->m_book_article->create_add_editor(
+                                array(
+                                    'editor_name' => $val,
+                                    'book_article_id' => $book_article_id
+                                )
+                            );
+                        }
+                    }
+                    
+                    $this->m_book_article->delete_add_teacher($book_article_id);
+                    if(!empty($this->input->post('teacher_name'))){
+                        foreach($this->input->post('teacher_name') as $ind=>$val){
+                            $this->m_book_article->create_add_teacher(
+                                array(
+                                    'teacher_name' => $val,
+                                    'teacher_email' => $this->input->post('teacher_email')[$ind],
+                                    'teacher_mobile' => $this->input->post('teacher_mobile')[$ind],
+                                    'book_article_id' => $book_article_id
+                                )
+                            );
+                        }
+                    }
+
                     return $this->output
                     ->set_content_type('application/json')
                     ->set_status_header(201)
@@ -416,15 +484,19 @@ class BookArticle extends CI_Controller {
                     'message' => 'Validation Error!',
                     'error' => array(
                         'title' => form_error('title'),
-                        'place' => form_error('place'),
-                        'book_article' => form_error('book_article'),
-                        'book' => form_error('book'),
-                        'editor' => form_error('editor'),
+                        'name' => form_error('name'),
+                        'edition' => form_error('edition'),
                         'date' => form_error('date'),
                         'isbn' => form_error('isbn'),
                         'link' => form_error('link'),
-                        'teacher_id' => form_error('teacher_id'),
                         'keyword_id' => form_error('keyword_id'),
+                        'publicher_id' => form_error('publicher_id'),
+                        'teacher_id[]' => form_error('teacher_id[]'),
+                        'teacher_name[]' => form_error('teacher_name[]'),
+                        'teacher_email[]' => form_error('teacher_email[]'),
+                        'teacher_mobile[]' => form_error('teacher_mobile[]'),
+                        'editor_id[]' => form_error('editor_id[]'),
+                        'editor_name[]' => form_error('editor_name[]'),
                     ),
                 ]));
             }
@@ -459,6 +531,12 @@ class BookArticle extends CI_Controller {
             $this->session->set_flashdata('error', 'Something went wrong please try again!');
             redirect($_SERVER['HTTP_REFERER']);
         }
+    }
+
+    function array_pluck($array, $key) {
+        return array_map(function($v) use ($key) {
+          return is_object($v) ? $v->$key : $v[$key];
+        }, $array);
     }
 
 }

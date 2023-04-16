@@ -30,6 +30,12 @@ class M_book_article extends CI_Model {
         }
 	}
 
+	public function get_teacher_all($book_article_id)
+	{
+		$query = $this->db->where('book_article_id', $book_article_id)->get('book_article_teacher');
+		return $query->result();
+	}
+
 	public function delete_teacher($book_article_id){
 		$this->db->where('book_article_id', $book_article_id)->delete('book_article_teacher');
 	}
@@ -43,6 +49,12 @@ class M_book_article extends CI_Model {
         }else{
             return false;
         }
+	}
+
+	public function get_add_teacher_all($book_article_id)
+	{
+		$query = $this->db->where('book_article_id', $book_article_id)->get('book_article_add_teacher');
+		return $query->result();
 	}
 
 	public function delete_add_teacher($book_article_id){
@@ -60,6 +72,12 @@ class M_book_article extends CI_Model {
         }
 	}
 
+	public function get_editor_all($book_article_id)
+	{
+		$query = $this->db->where('book_article_id', $book_article_id)->get('book_article_editor');
+		return $query->result();
+	}
+
 	public function delete_editor($book_article_id){
 		$this->db->where('book_article_id', $book_article_id)->delete('book_article_editor');
 	}
@@ -73,6 +91,12 @@ class M_book_article extends CI_Model {
         }else{
             return false;
         }
+	}
+
+	public function get_add_editor_all($book_article_id)
+	{
+		$query = $this->db->where('book_article_id', $book_article_id)->get('book_article_add_editor');
+		return $query->result();
 	}
 
 	public function delete_add_editor($book_article_id){
@@ -119,6 +143,10 @@ class M_book_article extends CI_Model {
 		{
 			$this->db->where('id', $id);
 			$this->db->delete('book_article');
+			$this->delete_teacher($id);
+			$this->delete_add_teacher($id);
+			$this->delete_editor($id);
+			$this->delete_add_editor($id);
 			return true;
 		} else {
 			return false;
