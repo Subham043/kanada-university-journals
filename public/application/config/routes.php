@@ -134,11 +134,11 @@ $route['book-article/list'] = 'BookArticle/lists'; //open dashboard
 $route['book-article/list/(:any)'] = 'BookArticle/lists/$1'; //open dashboard
 $route['book-article/delete/(:any)'] = 'BookArticle/delete/$1'; //open dashboard
 
-//article
-$route['article/create'] = 'Article/create'; //open dashboard
-$route['article/store'] = 'Article/store'; //open dashboard
-$route['article/edit/(:any)'] = 'Article/edit/$1'; //open dashboard
-$route['article/update/(:any)'] = 'Article/update/$1'; //open dashboard
-$route['article/list'] = 'Article/lists'; //open dashboard
-$route['article/list/(:any)'] = 'Article/lists/$1'; //open dashboard
-$route['article/delete/(:any)'] = 'Article/delete/$1'; //open dashboard
+//journal-article
+$route['journal-article/create'] = 'JournalArticle/create'; //open dashboard
+$route['journal-article/store'] = 'JournalArticle/store'; //open dashboard
+$route['journal-article/edit/(:any)'] = 'JournalArticle/edit/$1'; //open dashboard
+$route['journal-article/update/(:any)'] = 'JournalArticle/update/$1'; //open dashboard
+$route['journal-article/list'] = 'JournalArticle/lists'; //open dashboard
+$route['journal-article/list/(:any)'] = 'JournalArticle/lists/$1'; //open dashboard
+$route['journal-article/delete/(:any)'] = 'JournalArticle/delete/$1'; //open dashboard
