@@ -59,6 +59,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'article') !== false ? 'active' : ''; ?>" href="<?php echo base_url('article/list'); ?>">
+                                    <i class="ri-book-mark-line"></i> <span data-key="t-widgets">Article</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link <?php echo strpos(current_url(),'book-article') !== false ? 'active' : ''; ?>" href="<?php echo base_url('book-article/list'); ?>">
                                     <i class="ri-book-mark-line"></i> <span data-key="t-widgets">Book / Article</span>
                                 </a>

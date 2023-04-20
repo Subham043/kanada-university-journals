@@ -26,7 +26,7 @@ class Designation extends CI_Controller {
      * url : login
     **/
 
-    public function list()
+    public function lists()
 	{
 		$data['title'] = 'Designation - Kannada University';
 		$data['page_name'] = 'Designation';

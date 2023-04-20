@@ -26,7 +26,7 @@ class Publisher extends CI_Controller {
      * url : login
     **/
 
-    public function list()
+    public function lists()
 	{
 		$data['title'] = 'Publisher - Kannada University';
 		$data['page_name'] = 'Publisher';

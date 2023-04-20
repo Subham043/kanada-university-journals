@@ -26,7 +26,7 @@ class Conference extends CI_Controller {
      * url : login
     **/
 
-    public function list()
+    public function lists()
 	{
 		$data['title'] = 'Conference - Kannada University';
 		$data['page_name'] = 'Conference';

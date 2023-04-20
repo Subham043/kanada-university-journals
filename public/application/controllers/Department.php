@@ -26,7 +26,7 @@ class Department extends CI_Controller {
      * url : login
     **/
 
-    public function list()
+    public function lists()
 	{
 		$data['title'] = 'Department - Kannada University';
 		$data['page_name'] = 'Department';

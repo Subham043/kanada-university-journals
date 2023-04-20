@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div class="col-xxl-6 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="teacher_id" class="form-label"><?php echo $page_name; ?> Teacher</label>
+                                                        <label for="teacher_id" class="form-label"><?php echo $page_name; ?> Author</label>
                                                         <select class="form-control" id="teacher_id" name="teacher_id[]" multiple></select>
                                                         <i class="invalid-message error"></i>
                                                     </div>
@@ -140,7 +140,7 @@
                                 
                                 <div class="card repeater-teacher">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Additional Teachers From Other University</h4>
+                                        <h4 class="card-title mb-0 flex-grow-1">Additional Authors From Other University</h4>
                                         <button
                                             type="button"
                                             data-repeater-create

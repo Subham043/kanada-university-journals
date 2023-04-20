@@ -26,7 +26,7 @@ class Keyword extends CI_Controller {
      * url : login
     **/
 
-    public function list()
+    public function lists()
 	{
 		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
