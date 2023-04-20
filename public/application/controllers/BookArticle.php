@@ -89,9 +89,9 @@ class BookArticle extends CI_Controller {
             $this->form_validation->set_rules('isbn', 'ISBN/ISSN', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('date', 'Date of Seminar/Workshop/Book/Article', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('link', 'Book/Article Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('publisher_id', 'Teacher', 'trim|required|numeric');
+            $this->form_validation->set_rules('publisher_id', 'Publisher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
-            $this->form_validation->set_rules('teacher_id[]', 'Teacher', 'trim|required|numeric');
+            $this->form_validation->set_rules('teacher_id[]', 'Author', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_id[]', 'Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             if((!empty($this->input->post('teacher_name[]'))) || (!empty($this->input->post('teacher_email[]'))) || (!empty($this->input->post('teacher_mobile[]')))){
@@ -329,9 +329,9 @@ class BookArticle extends CI_Controller {
             $this->form_validation->set_rules('isbn', 'ISBN/ISSN', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('date', 'Date of Seminar/Workshop/Book/Article', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('link', 'Book/Article Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('publisher_id', 'Teacher', 'trim|required|numeric');
+            $this->form_validation->set_rules('publisher_id', 'Publisher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
-            $this->form_validation->set_rules('teacher_id[]', 'Teacher', 'trim|required|numeric');
+            $this->form_validation->set_rules('teacher_id[]', 'Author', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_id[]', 'Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             if((!empty($this->input->post('teacher_name[]'))) || (!empty($this->input->post('teacher_email[]'))) || (!empty($this->input->post('teacher_mobile[]')))){

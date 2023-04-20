@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
-                                                        <label for="edition" class="form-label"><?php echo $page_name; ?> Edition</label>
+                                                        <label for="edition" class="form-label"><?php echo $page_name; ?> Edition/Volume</label>
                                                         <input type="text" class="form-control" id="edition" name="edition" placeholder="Enter book/article edition" value="<?php echo $data->edition; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
