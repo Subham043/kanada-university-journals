@@ -53,10 +53,12 @@
                                             <table class="table align-middle table-nowrap" id="customerTable">
                                                 <thead class="table-light">
                                                     <tr>
-                                                        <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> Title</th>
-                                                        <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> Name</th>
+                                                        <th class="sort" data-sort="customer_name">Title</th>
+                                                        <th class="sort" data-sort="customer_name">Name</th>
                                                         <th class="sort" data-sort="customer_name">Publish Date of <?php echo $page_name; ?></th>
-                                                        <th class="sort" data-sort="customer_name"><?php echo $page_name; ?> ISBN/ISSN</th>
+                                                        <th class="sort" data-sort="customer_name">ISBN/ISSN</th>
+                                                        <th class="sort" data-sort="customer_name">Published?</th>
+                                                        <th class="sort" data-sort="customer_name">Downloadable?</th>
                                                         <th class="sort" data-sort="date">Created Date</th>
                                                         <th class="sort" data-sort="action">Action</th>
                                                     </tr>
@@ -69,6 +71,16 @@
                                                         <td class="customer_name"><?php echo $item->name; ?></td>
                                                         <td class="customer_name"><?php echo $item->date; ?></td>
                                                         <td class="customer_name"><?php echo $item->isbn; ?></td>
+                                                        <?php if($item->is_published==1){ ?>
+                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Yes</span></td>
+                                                        <?php }else{ ?>
+                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">No</span></td>
+                                                        <?php } ?>
+                                                        <?php if($item->is_downloadable==1){ ?>
+                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Yes</span></td>
+                                                        <?php }else{ ?>
+                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">No</span></td>
+                                                        <?php } ?>
                                                         <td class="date"><?php echo $item->timestamp; ?></td>
                                                         <td>
                                                             <div class="d-flex gap-2">

@@ -83,6 +83,8 @@ class JournalArticle extends CI_Controller {
 
             $this->load->library('upload');
             $this->security->xss_clean($_POST);
+            $this->form_validation->set_rules('is_downloadable', 'Journal/Article Can Download', 'trim|required|in_list[1,0]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+            $this->form_validation->set_rules('is_published', 'Journal/Article Published', 'trim|required|in_list[1,0]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('name', 'Journal/Article Name', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('title', 'Journal/Article Title', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('edition', 'Journal/Article Edition/Volume', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
@@ -167,6 +169,8 @@ class JournalArticle extends CI_Controller {
                 $request['isbn'] = $this->input->post('isbn');
                 $request['date'] = $this->input->post('date');
                 $request['link'] = $this->input->post('link');
+                $request['is_downloadable'] = $this->input->post('is_downloadable');
+                $request['is_published'] = $this->input->post('is_published');
                 $request['publisher_id'] = $this->input->post('publisher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
                 if ($id = $this->m_journal_article->create($request)) {
@@ -323,6 +327,8 @@ class JournalArticle extends CI_Controller {
             $this->load->library('upload');
 
             $this->security->xss_clean($_POST);
+            $this->form_validation->set_rules('is_downloadable', 'Journal/Article Can Download', 'trim|required|in_list[1,0]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+            $this->form_validation->set_rules('is_published', 'Journal/Article Published', 'trim|required|in_list[1,0]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('name', 'Journal/Article Name', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('title', 'Journal/Article Title', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('edition', 'Journal/Article Edition/Volume', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
@@ -420,6 +426,8 @@ class JournalArticle extends CI_Controller {
                 $request['isbn'] = $this->input->post('isbn');
                 $request['date'] = $this->input->post('date');
                 $request['link'] = $this->input->post('link');
+                $request['is_downloadable'] = $this->input->post('is_downloadable');
+                $request['is_published'] = $this->input->post('is_published');
                 $request['publisher_id'] = $this->input->post('publisher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
                 if ($this->m_journal_article->update($article_id, $request)!=FALSE) {

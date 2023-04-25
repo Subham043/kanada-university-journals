@@ -128,6 +128,30 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="mt-4 mt-md-0">
+                                                        <div class="form-group">
+                                                            <div class="form-check form-switch form-check-right mb-2">
+                                                                <input class="form-check-input" type="checkbox" role="switch" id="is_published" name="is_published" <?php echo $data->is_published==1 ? 'checked' : ''; ?> >
+                                                                <label class="form-check-label" for="is_published">Publish on website ?</label>
+                                                            </div>
+                                                            <i class="invalid-message error"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="mt-4 mt-md-0">
+                                                        <div class="form-group">
+                                                            <div class="form-check form-switch form-check-right mb-2">
+                                                                <input class="form-check-input" type="checkbox" role="switch" id="is_downloadable" name="is_downloadable" <?php echo $data->is_downloadable==1 ? 'checked' : ''; ?> >
+                                                                <label class="form-check-label" for="is_downloadable">Can download without login ?</label>
+                                                            </div>
+                                                            <i class="invalid-message error"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 
                                                 <input  autocomplete="off"  type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
@@ -392,6 +416,8 @@
                         submitBtn.disabled = true;
 
                         const formData = new FormData;
+                        formData.append('is_published',document.getElementById('is_published').checked ? 1 : 0)
+                        formData.append('is_downloadable',document.getElementById('is_downloadable').checked ? 1 : 0)
                         formData.append('title', document.getElementById('title').value)
                         formData.append('edition', document.getElementById('edition').value)
                         formData.append('isbn', document.getElementById('isbn').value)
