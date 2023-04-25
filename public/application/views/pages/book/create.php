@@ -245,8 +245,8 @@
                                             <div class="row gy-4 p-3" data-repeater-list="group-a">
                                                 <div class="col-xxl-4 col-md-6" data-repeater-item>
                                                     <div class="form-group mb-3">
-                                                        <label for="co_editor_name" class="form-label"><?php echo $page_name; ?> Co-Author Name</label>
-                                                        <input type="text" class="form-control co_editor_name" name="co_editor_name[]" placeholder="Enter co-editor name">
+                                                        <label for="co_teacher_name" class="form-label"><?php echo $page_name; ?> Co-Author Name</label>
+                                                        <input type="text" class="form-control co_teacher_name" name="co_teacher_name[]" placeholder="Enter co-author name">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                     <button

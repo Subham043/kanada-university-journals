@@ -475,7 +475,35 @@
                     }
                 });
                 
+                $('.repeater-co-teacher').repeater({
+                    // options and callbacks here
+                    show: function () {
+                        $(this).slideDown();
+                    },
+                    hide: function (deleteElement) {
+                        if(confirm('Are you sure you want to delete this element?')) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    },
+                    ready: function (setIndexes) {
+                    }
+                });
+
                 $('.repeater-editor').repeater({
+                    // options and callbacks here
+                    show: function () {
+                        $(this).slideDown();
+                    },
+                    hide: function (deleteElement) {
+                        if(confirm('Are you sure you want to delete this element?')) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    },
+                    ready: function (setIndexes) {
+                    }
+                });
+                
+                $('.repeater-co-editor').repeater({
                     // options and callbacks here
                     show: function () {
                         $(this).slideDown();

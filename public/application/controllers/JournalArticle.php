@@ -195,8 +195,8 @@ class JournalArticle extends CI_Controller {
                         );
                     }
 
-                    $this->m_journal_article->delete_add_editor($id);
                     if(!empty($this->input->post('editor_name'))){
+                        $this->m_journal_article->delete_add_editor($id);
                         foreach($this->input->post('editor_name') as $val){
                             $this->m_journal_article->create_add_editor(
                                 array(
@@ -207,8 +207,8 @@ class JournalArticle extends CI_Controller {
                         }
                     }
                     
-                    $this->m_journal_article->delete_add_teacher($id);
                     if(!empty($this->input->post('teacher_name'))){
+                        $this->m_journal_article->delete_add_teacher($id);
                         foreach($this->input->post('teacher_name') as $ind=>$val){
                             $this->m_journal_article->create_add_teacher(
                                 array(
@@ -452,8 +452,8 @@ class JournalArticle extends CI_Controller {
                         );
                     }
 
-                    $this->m_journal_article->delete_add_editor($article_id);
                     if(!empty($this->input->post('editor_name'))){
+                        $this->m_journal_article->delete_add_editor($article_id);
                         foreach($this->input->post('editor_name') as $val){
                             $this->m_journal_article->create_add_editor(
                                 array(
@@ -464,8 +464,8 @@ class JournalArticle extends CI_Controller {
                         }
                     }
                     
-                    $this->m_journal_article->delete_add_teacher($article_id);
                     if(!empty($this->input->post('teacher_name'))){
+                        $this->m_journal_article->delete_add_teacher($article_id);
                         foreach($this->input->post('teacher_name') as $ind=>$val){
                             $this->m_journal_article->create_add_teacher(
                                 array(

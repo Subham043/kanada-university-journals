@@ -221,8 +221,8 @@ class Book extends CI_Controller {
                         );
                     }
 
-                    $this->m_book->delete_add_editor($id);
                     if(!empty($this->input->post('editor_name'))){
+                        $this->m_book->delete_add_editor($id);
                         foreach($this->input->post('editor_name') as $val){
                             $this->m_book->create_add_editor(
                                 array(
@@ -233,8 +233,8 @@ class Book extends CI_Controller {
                         }
                     }
                     
-                    $this->m_book->delete_add_co_editor($id);
                     if(!empty($this->input->post('co_editor_name'))){
+                        $this->m_book->delete_add_co_editor($id);
                         foreach($this->input->post('co_editor_name') as $val){
                             $this->m_book->create_add_co_editor(
                                 array(
@@ -245,8 +245,8 @@ class Book extends CI_Controller {
                         }
                     }
                     
-                    $this->m_book->delete_add_co_teacher($id);
                     if(!empty($this->input->post('co_teacher_name'))){
+                        $this->m_book->delete_add_co_teacher($id);
                         foreach($this->input->post('co_teacher_name') as $val){
                             $this->m_book->create_add_co_teacher(
                                 array(
@@ -257,8 +257,8 @@ class Book extends CI_Controller {
                         }
                     }
                     
-                    $this->m_book->delete_add_teacher($id);
                     if(!empty($this->input->post('teacher_name'))){
+                        $this->m_book->delete_add_teacher($id);
                         foreach($this->input->post('teacher_name') as $ind=>$val){
                             $this->m_book->create_add_teacher(
                                 array(
@@ -370,6 +370,7 @@ class Book extends CI_Controller {
         $this->load->model('m_keyword');
         $this->load->model('m_publisher');
         $data['teacher'] = $this->m_teacher->get_all();
+        $data['co_teacher'] = $data['teacher'];
         $data['co_editor'] = $data['teacher'];
         $data['editor'] = $data['teacher'];
         $data['co_editor'] = $data['teacher'];
@@ -406,7 +407,7 @@ class Book extends CI_Controller {
             $this->form_validation->set_rules('publisher_id', 'Publisher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
             $this->form_validation->set_rules('teacher_id[]', 'Author', 'trim|required|numeric');
-            $this->form_validation->set_rules('co_cteacher_id[]', 'Co-Author', 'trim|required|numeric');
+            $this->form_validation->set_rules('co_teacher_id[]', 'Co-Author', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_id[]', 'Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('co_editor_id[]', 'Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
@@ -544,8 +545,8 @@ class Book extends CI_Controller {
                         );
                     }
 
-                    $this->m_book->delete_add_editor($book_id);
                     if(!empty($this->input->post('editor_name'))){
+                        $this->m_book->delete_add_editor($book_id);
                         foreach($this->input->post('editor_name') as $val){
                             $this->m_book->create_add_editor(
                                 array(
@@ -556,8 +557,8 @@ class Book extends CI_Controller {
                         }
                     }
                     
-                    $this->m_book->delete_add_co_editor($book_id);
                     if(!empty($this->input->post('co_editor_name'))){
+                        $this->m_book->delete_add_co_editor($book_id);
                         foreach($this->input->post('co_editor_name') as $val){
                             $this->m_book->create_add_co_editor(
                                 array(
@@ -568,8 +569,8 @@ class Book extends CI_Controller {
                         }
                     }
                     
-                    $this->m_book->delete_add_co_teacher($book_id);
                     if(!empty($this->input->post('co_teacher_name'))){
+                        $this->m_book->delete_add_co_teacher($book_id);
                         foreach($this->input->post('co_teacher_name') as $val){
                             $this->m_book->create_add_co_teacher(
                                 array(
@@ -580,8 +581,8 @@ class Book extends CI_Controller {
                         }
                     }
                     
-                    $this->m_book->delete_add_teacher($book_id);
                     if(!empty($this->input->post('teacher_name'))){
+                        $this->m_book->delete_add_teacher($book_id);
                         foreach($this->input->post('teacher_name') as $ind=>$val){
                             $this->m_book->create_add_teacher(
                                 array(
