@@ -151,3 +151,12 @@ $route['journal-article/update/(:any)'] = 'JournalArticle/update/$1'; //open das
 $route['journal-article/list'] = 'JournalArticle/lists'; //open dashboard
 $route['journal-article/list/(:any)'] = 'JournalArticle/lists/$1'; //open dashboard
 $route['journal-article/delete/(:any)'] = 'JournalArticle/delete/$1'; //open dashboard
+
+//journal
+$route['journal/create'] = 'Journal/create'; //open dashboard
+$route['journal/store'] = 'Journal/store'; //open dashboard
+$route['journal/edit/(:any)'] = 'Journal/edit/$1'; //open dashboard
+$route['journal/update/(:any)'] = 'Journal/update/$1'; //open dashboard
+$route['journal/list'] = 'Journal/lists'; //open dashboard
+$route['journal/list/(:any)'] = 'Journal/lists/$1'; //open dashboard
+$route['journal/delete/(:any)'] = 'Journal/delete/$1'; //open dashboard

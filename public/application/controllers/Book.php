@@ -100,7 +100,7 @@ class Book extends CI_Controller {
             $this->form_validation->set_rules('editor_id[]', 'Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('co_editor_id[]', 'Co-Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
-            $this->form_validation->set_rules('co_editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
+            $this->form_validation->set_rules('co_editor_name[]', 'Co-Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('co_teacher_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             if((!empty($this->input->post('teacher_name[]'))) || (!empty($this->input->post('teacher_email[]'))) || (!empty($this->input->post('teacher_mobile[]')))){
                 $this->form_validation->set_rules('teacher_name[]', 'Author Name', 'trim|required|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
@@ -371,7 +371,6 @@ class Book extends CI_Controller {
         $this->load->model('m_publisher');
         $data['teacher'] = $this->m_teacher->get_all();
         $data['co_teacher'] = $data['teacher'];
-        $data['co_editor'] = $data['teacher'];
         $data['editor'] = $data['teacher'];
         $data['co_editor'] = $data['teacher'];
         $data['keyword'] = $this->m_keyword->get_all();
@@ -409,7 +408,7 @@ class Book extends CI_Controller {
             $this->form_validation->set_rules('teacher_id[]', 'Author', 'trim|required|numeric');
             $this->form_validation->set_rules('co_teacher_id[]', 'Co-Author', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_id[]', 'Editor', 'trim|required|numeric');
-            $this->form_validation->set_rules('co_editor_id[]', 'Editor', 'trim|required|numeric');
+            $this->form_validation->set_rules('co_editor_id[]', 'Co-Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('editor_name[]', 'Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('co_editor_name[]', 'Co-Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('co_teacher_name[]', 'Co-Author Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));

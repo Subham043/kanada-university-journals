@@ -39,63 +39,63 @@
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="title" class="form-label"><?php echo $page_name; ?> Title</label>
-                                                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter book/article title" value="<?php echo $data->title; ?>">
+                                                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter book title" value="<?php echo $data->title; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="edition" class="form-label"><?php echo $page_name; ?> Edition</label>
-                                                        <input type="text" class="form-control" id="edition" name="edition" placeholder="Enter book/article edition" value="<?php echo $data->edition; ?>">
+                                                        <input type="text" class="form-control" id="edition" name="edition" placeholder="Enter book edition" value="<?php echo $data->edition; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="isbn" class="form-label"><?php echo $page_name; ?> ISBN/ISSN</label>
-                                                        <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter book/article isbn" value="<?php echo $data->isbn; ?>">
+                                                        <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Enter book isbn" value="<?php echo $data->isbn; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="date" class="form-label">Date of <?php echo $page_name; ?> Publishing</label>
-                                                        <input type="date" class="form-control" id="date" name="date" placeholder="Enter publishing date of book/article" value="<?php echo $data->date; ?>">
+                                                        <input type="date" class="form-control" id="date" name="date" placeholder="Enter publishing date of book" value="<?php echo $data->date; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="link" class="form-label"><?php echo $page_name; ?> Web link KUH website</label>
-                                                        <input type="text" class="form-control" id="link" name="link" placeholder="Enter book/article website link KUH website" value="<?php echo $data->link; ?>">
+                                                        <input type="text" class="form-control" id="link" name="link" placeholder="Enter book website link KUH website" value="<?php echo $data->link; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="name" class="form-label"><?php echo $page_name; ?> Name</label>
-                                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter book/article name" value="<?php echo $data->name; ?>">
+                                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter book name" value="<?php echo $data->name; ?>">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="image" class="form-label"><?php echo $page_name; ?> Book Image</label>
-                                                        <input type="file" class="form-control" id="image" name="image" placeholder="Enter book/article image">
+                                                        <input type="file" class="form-control" id="image" name="image" placeholder="Enter book image">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="abstract" class="form-label"><?php echo $page_name; ?> Abstract</label>
-                                                        <input type="file" class="form-control" id="abstract" name="abstract" placeholder="Enter book/article abstract">
+                                                        <input type="file" class="form-control" id="abstract" name="abstract" placeholder="Enter book abstract">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-4 col-md-6">
                                                     <div class="form-group mb-3">
                                                         <label for="article" class="form-label"><?php echo $page_name; ?> Article</label>
-                                                        <input type="file" class="form-control" id="article" name="article" placeholder="Enter book/article article">
+                                                        <input type="file" class="form-control" id="article" name="article" placeholder="Enter book article">
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
