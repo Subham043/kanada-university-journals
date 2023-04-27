@@ -134,6 +134,9 @@ $route['admin/conference/list'] = 'Conference/lists'; //open dashboard
 $route['admin/conference/list/(:any)'] = 'Conference/lists/$1'; //open dashboard
 $route['admin/conference/delete/(:any)'] = 'Conference/delete/$1'; //open dashboard
 
+$route['conference-proceedings'] = 'ConferenceMain/lists'; //open dashboard
+$route['conference-proceedings/(:any)'] = 'ConferenceMain/lists/$1'; //open dashboard
+
 //book-article
 $route['admin/book-article/create'] = 'BookArticle/create'; //open dashboard
 $route['admin/book-article/store'] = 'BookArticle/store'; //open dashboard

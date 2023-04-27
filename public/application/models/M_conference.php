@@ -75,6 +75,42 @@ class M_conference extends CI_Model {
 
         return $query->result();
     }
+	
+	public function get_main_count($search = null) {
+		$this->db->select('conference.id');
+		$this->db->from('conference');
+		$this->db->join('teacher','teacher.id = conference.teacher_id');
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('conference.title', $search, 'both');
+			$this->db->or_like('conference.conference', $search, 'both');
+			$this->db->or_like('conference.isbn', $search, 'both');
+			$this->db->or_like('conference.place', $search, 'both');
+		}
+		$query = $this->db->get();
+
+        return $query->num_rows();
+    }
+
+    public function get_main_list($limit, $start, $search = null) {
+
+		$this->db->select('conference.*, teacher.first_name, teacher.last_name, teacher.prefix');
+		$this->db->from('conference');
+		$this->db->join('teacher','teacher.id = conference.teacher_id');
+        $this->db->limit($limit, $start);
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('conference.title', $search, 'both');
+			$this->db->or_like('conference.conference', $search, 'both');
+			$this->db->or_like('conference.isbn', $search, 'both');
+			$this->db->or_like('conference.place', $search, 'both');
+		}
+		$query = $this->db->get();
+
+        return $query->result();
+    }
 
 }
 
