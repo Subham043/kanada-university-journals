@@ -115,6 +115,10 @@ $route['admin/teacher/update/(:any)'] = 'Teacher/update/$1'; //open dashboard
 $route['admin/teacher/list'] = 'Teacher/lists'; //open dashboard
 $route['admin/teacher/list/(:any)'] = 'Teacher/lists/$1'; //open dashboard
 $route['admin/teacher/delete/(:any)'] = 'Teacher/delete/$1'; //open dashboard
+$route['admin/teacher/update/(:any)'] = 'Teacher/update/$1'; //open dashboard
+
+$route['teacher'] = 'TeacherMain/lists'; //open dashboard
+$route['teacher/(:any)'] = 'TeacherMain/lists/$1'; //open dashboard
 
 //conference
 $route['admin/conference/create'] = 'Conference/create'; //open dashboard

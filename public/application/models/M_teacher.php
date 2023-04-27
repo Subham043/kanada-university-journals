@@ -75,6 +75,23 @@ class M_teacher extends CI_Model {
 
         return $query->result();
     }
+    
+	public function get_list_main($limit, $start, $search = null, $department = null) {
+		$this->db->select('teacher.*, department.*');
+		$this->db->from('teacher');
+		$this->db->join('department','department.id = teacher.department_id','left');
+        $this->db->limit($limit, $start);
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('department.name', $search, 'both');
+		}
+		if(!empty($department)){
+			$this->db->where('department.code', $department);
+		}
+		$query = $this->db->get();
+        return $query->result();
+    }
 
 }
 
