@@ -119,6 +119,11 @@ $route['admin/teacher/update/(:any)'] = 'Teacher/update/$1'; //open dashboard
 
 $route['teacher'] = 'TeacherMain/lists'; //open dashboard
 $route['teacher/(:any)'] = 'TeacherMain/lists/$1'; //open dashboard
+$route['teacher/(:any)/journal-articles'] = 'TeacherMain/journal_articles/$1'; //open dashboard
+$route['teacher/(:any)/book-articles'] = 'TeacherMain/book_articles/$1'; //open dashboard
+$route['teacher/(:any)/journal'] = 'TeacherMain/journal/$1'; //open dashboard
+$route['teacher/(:any)/book'] = 'TeacherMain/book/$1'; //open dashboard
+$route['teacher/(:any)/conference-proceedings'] = 'TeacherMain/conference_proceedings/$1'; //open dashboard
 
 //conference
 $route['admin/conference/create'] = 'Conference/create'; //open dashboard

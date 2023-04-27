@@ -33,7 +33,7 @@ class Department extends CI_Controller {
 
         $this->load->library('pagination');
 
-        $config['base_url'] = base_url('department/list');
+        $config['base_url'] = base_url('admin/department/list');
         $config['total_rows'] = $this->m_department->get_count();
         $config['per_page'] = 10;
 
@@ -54,7 +54,7 @@ class Department extends CI_Controller {
 
         $this->pagination->initialize($config);
 
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
         $data["links"] = $this->pagination->create_links();
 

@@ -78,7 +78,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-2 col">
-                                                            <div class="text-end"> <a href="pages-profile.html" class="btn btn-light view-btn">View Profile</a> </div>
+                                                            <div class="text-end"> <a href="<?php echo base_url('teacher/'.$this->encryption_url->safe_b64encode($item->id).'/journal-articles'); ?>" class="btn btn-light view-btn">View Profile</a> </div>
                                                         </div>
                                                     </div>
                                                 </div>
