@@ -246,7 +246,7 @@
                         submitBtn.disabled = true;
                         $.ajax({
                             type: "POST",
-                            url: "<?php echo base_url('teacher/store'); ?>",
+                            url: "<?php echo base_url('admin/teacher/store'); ?>",
                             data: new FormData(form),
                             processData: false,
                             contentType: false,

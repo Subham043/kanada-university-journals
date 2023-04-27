@@ -646,7 +646,7 @@
                         
                         $.ajax({
                             type: "POST",
-                            url: "<?php echo base_url('book/update/'.$id); ?>",
+                            url: "<?php echo base_url('admin/book/update/'.$id); ?>",
                             data: formData,
                             processData: false,
                             contentType: false,

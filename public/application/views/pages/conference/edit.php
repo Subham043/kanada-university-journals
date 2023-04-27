@@ -222,7 +222,7 @@
                         submitBtn.disabled = true;
                         $.ajax({
                             type: "POST",
-                            url: "<?php echo base_url('conference/update/'.$id); ?>",
+                            url: "<?php echo base_url('admin/conference/update/'.$id); ?>",
                             data: new FormData(form),
                             processData: false,
                             contentType: false,

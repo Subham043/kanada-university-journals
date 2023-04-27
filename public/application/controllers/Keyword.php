@@ -76,10 +76,10 @@ class Keyword extends CI_Controller {
             $request['name'] = $this->input->post('name');
             if ($this->m_keyword->create($request)) {
                 $this->session->set_flashdata('success', 'Keyword created Successfully');
-                redirect('keyword/create', 'refresh');
+                redirect('admin/keyword/create', 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
-                redirect('keyword/create', 'refresh');
+                redirect('admin/keyword/create', 'refresh');
             }
         }else{
             $this->load->view('pages/keyword/create.php', $data);
@@ -114,10 +114,10 @@ class Keyword extends CI_Controller {
             $request['name'] = $this->input->post('name');
             if ($this->m_keyword->update($keyword_id, $request)!=FALSE) {
                 $this->session->set_flashdata('success', 'Keyword update Successfully');
-                redirect('keyword/edit/'.$this->encryption_url->safe_b64encode($keyword_id), 'refresh');
+                redirect('admin/keyword/edit/'.$this->encryption_url->safe_b64encode($keyword_id), 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
-                redirect('keyword/edit/'.$this->encryption_url->safe_b64encode($keyword_id), 'refresh');
+                redirect('admin/keyword/edit/'.$this->encryption_url->safe_b64encode($keyword_id), 'refresh');
             }
         }else{
             $this->load->view('pages/keyword/edit.php', $data);

@@ -79,84 +79,84 @@ $route['password-change'] = 'Account/password_update'; //forgot password email c
 $route['logout'] = 'Account/logout'; //logout
 
 //department
-$route['department/create'] = 'Department/create'; //open dashboard
-$route['department/edit/(:any)'] = 'Department/edit/$1'; //open dashboard
-$route['department/list'] = 'Department/lists'; //open dashboard
-$route['department/list/(:any)'] = 'Department/lists/$1'; //open dashboard
-$route['department/delete/(:any)'] = 'Department/delete/$1'; //open dashboard
+$route['admin/department/create'] = 'Department/create'; //open dashboard
+$route['admin/department/edit/(:any)'] = 'Department/edit/$1'; //open dashboard
+$route['admin/department/list'] = 'Department/lists'; //open dashboard
+$route['admin/department/list/(:any)'] = 'Department/lists/$1'; //open dashboard
+$route['admin/department/delete/(:any)'] = 'Department/delete/$1'; //open dashboard
 
 
 //designation
-$route['designation/create'] = 'Designation/create'; //open dashboard
-$route['designation/edit/(:any)'] = 'Designation/edit/$1'; //open dashboard
-$route['designation/list'] = 'Designation/lists'; //open dashboard
-$route['designation/list/(:any)'] = 'Designation/lists/$1'; //open dashboard
-$route['designation/delete/(:any)'] = 'Designation/delete/$1'; //open dashboard
+$route['admin/designation/create'] = 'Designation/create'; //open dashboard
+$route['admin/designation/edit/(:any)'] = 'Designation/edit/$1'; //open dashboard
+$route['admin/designation/list'] = 'Designation/lists'; //open dashboard
+$route['admin/designation/list/(:any)'] = 'Designation/lists/$1'; //open dashboard
+$route['admin/designation/delete/(:any)'] = 'Designation/delete/$1'; //open dashboard
 
 //keyword
-$route['keyword/create'] = 'Keyword/create'; //open dashboard
-$route['keyword/edit/(:any)'] = 'Keyword/edit/$1'; //open dashboard
-$route['keyword/list'] = 'Keyword/lists'; //open dashboard
-$route['keyword/list/(:any)'] = 'Keyword/lists/$1'; //open dashboard
-$route['keyword/delete/(:any)'] = 'Keyword/delete/$1'; //open dashboard
+$route['admin/keyword/create'] = 'Keyword/create'; //open dashboard
+$route['admin/keyword/edit/(:any)'] = 'Keyword/edit/$1'; //open dashboard
+$route['admin/keyword/list'] = 'Keyword/lists'; //open dashboard
+$route['admin/keyword/list/(:any)'] = 'Keyword/lists/$1'; //open dashboard
+$route['admin/keyword/delete/(:any)'] = 'Keyword/delete/$1'; //open dashboard
 
 //publisher
-$route['publisher/create'] = 'Publisher/create'; //open dashboard
-$route['publisher/edit/(:any)'] = 'Publisher/edit/$1'; //open dashboard
-$route['publisher/list'] = 'Publisher/lists'; //open dashboard
-$route['publisher/list/(:any)'] = 'Publisher/lists/$1'; //open dashboard
-$route['publisher/delete/(:any)'] = 'Publisher/delete/$1'; //open dashboard
+$route['admin/publisher/create'] = 'Publisher/create'; //open dashboard
+$route['admin/publisher/edit/(:any)'] = 'Publisher/edit/$1'; //open dashboard
+$route['admin/publisher/list'] = 'Publisher/lists'; //open dashboard
+$route['admin/publisher/list/(:any)'] = 'Publisher/lists/$1'; //open dashboard
+$route['admin/publisher/delete/(:any)'] = 'Publisher/delete/$1'; //open dashboard
 
 //teacher
-$route['teacher/create'] = 'Teacher/create'; //open dashboard
-$route['teacher/store'] = 'Teacher/store'; //open dashboard
-$route['teacher/edit/(:any)'] = 'Teacher/edit/$1'; //open dashboard
-$route['teacher/update/(:any)'] = 'Teacher/update/$1'; //open dashboard
-$route['teacher/list'] = 'Teacher/lists'; //open dashboard
-$route['teacher/list/(:any)'] = 'Teacher/lists/$1'; //open dashboard
-$route['teacher/delete/(:any)'] = 'Teacher/delete/$1'; //open dashboard
+$route['admin/teacher/create'] = 'Teacher/create'; //open dashboard
+$route['admin/teacher/store'] = 'Teacher/store'; //open dashboard
+$route['admin/teacher/edit/(:any)'] = 'Teacher/edit/$1'; //open dashboard
+$route['admin/teacher/update/(:any)'] = 'Teacher/update/$1'; //open dashboard
+$route['admin/teacher/list'] = 'Teacher/lists'; //open dashboard
+$route['admin/teacher/list/(:any)'] = 'Teacher/lists/$1'; //open dashboard
+$route['admin/teacher/delete/(:any)'] = 'Teacher/delete/$1'; //open dashboard
 
 //conference
-$route['conference/create'] = 'Conference/create'; //open dashboard
-$route['conference/store'] = 'Conference/store'; //open dashboard
-$route['conference/edit/(:any)'] = 'Conference/edit/$1'; //open dashboard
-$route['conference/update/(:any)'] = 'Conference/update/$1'; //open dashboard
-$route['conference/list'] = 'Conference/lists'; //open dashboard
-$route['conference/list/(:any)'] = 'Conference/lists/$1'; //open dashboard
-$route['conference/delete/(:any)'] = 'Conference/delete/$1'; //open dashboard
+$route['admin/conference/create'] = 'Conference/create'; //open dashboard
+$route['admin/conference/store'] = 'Conference/store'; //open dashboard
+$route['admin/conference/edit/(:any)'] = 'Conference/edit/$1'; //open dashboard
+$route['admin/conference/update/(:any)'] = 'Conference/update/$1'; //open dashboard
+$route['admin/conference/list'] = 'Conference/lists'; //open dashboard
+$route['admin/conference/list/(:any)'] = 'Conference/lists/$1'; //open dashboard
+$route['admin/conference/delete/(:any)'] = 'Conference/delete/$1'; //open dashboard
 
 //book-article
-$route['book-article/create'] = 'BookArticle/create'; //open dashboard
-$route['book-article/store'] = 'BookArticle/store'; //open dashboard
-$route['book-article/edit/(:any)'] = 'BookArticle/edit/$1'; //open dashboard
-$route['book-article/update/(:any)'] = 'BookArticle/update/$1'; //open dashboard
-$route['book-article/list'] = 'BookArticle/lists'; //open dashboard
-$route['book-article/list/(:any)'] = 'BookArticle/lists/$1'; //open dashboard
-$route['book-article/delete/(:any)'] = 'BookArticle/delete/$1'; //open dashboard
+$route['admin/book-article/create'] = 'BookArticle/create'; //open dashboard
+$route['admin/book-article/store'] = 'BookArticle/store'; //open dashboard
+$route['admin/book-article/edit/(:any)'] = 'BookArticle/edit/$1'; //open dashboard
+$route['admin/book-article/update/(:any)'] = 'BookArticle/update/$1'; //open dashboard
+$route['admin/book-article/list'] = 'BookArticle/lists'; //open dashboard
+$route['admin/book-article/list/(:any)'] = 'BookArticle/lists/$1'; //open dashboard
+$route['admin/book-article/delete/(:any)'] = 'BookArticle/delete/$1'; //open dashboard
 
 //book
-$route['book/create'] = 'Book/create'; //open dashboard
-$route['book/store'] = 'Book/store'; //open dashboard
-$route['book/edit/(:any)'] = 'Book/edit/$1'; //open dashboard
-$route['book/update/(:any)'] = 'Book/update/$1'; //open dashboard
-$route['book/list'] = 'Book/lists'; //open dashboard
-$route['book/list/(:any)'] = 'Book/lists/$1'; //open dashboard
-$route['book/delete/(:any)'] = 'Book/delete/$1'; //open dashboard
+$route['admin/book/create'] = 'Book/create'; //open dashboard
+$route['admin/book/store'] = 'Book/store'; //open dashboard
+$route['admin/book/edit/(:any)'] = 'Book/edit/$1'; //open dashboard
+$route['admin/book/update/(:any)'] = 'Book/update/$1'; //open dashboard
+$route['admin/book/list'] = 'Book/lists'; //open dashboard
+$route['admin/book/list/(:any)'] = 'Book/lists/$1'; //open dashboard
+$route['admin/book/delete/(:any)'] = 'Book/delete/$1'; //open dashboard
 
 //journal-article
-$route['journal-article/create'] = 'JournalArticle/create'; //open dashboard
-$route['journal-article/store'] = 'JournalArticle/store'; //open dashboard
-$route['journal-article/edit/(:any)'] = 'JournalArticle/edit/$1'; //open dashboard
-$route['journal-article/update/(:any)'] = 'JournalArticle/update/$1'; //open dashboard
-$route['journal-article/list'] = 'JournalArticle/lists'; //open dashboard
-$route['journal-article/list/(:any)'] = 'JournalArticle/lists/$1'; //open dashboard
-$route['journal-article/delete/(:any)'] = 'JournalArticle/delete/$1'; //open dashboard
+$route['admin/journal-article/create'] = 'JournalArticle/create'; //open dashboard
+$route['admin/journal-article/store'] = 'JournalArticle/store'; //open dashboard
+$route['admin/journal-article/edit/(:any)'] = 'JournalArticle/edit/$1'; //open dashboard
+$route['admin/journal-article/update/(:any)'] = 'JournalArticle/update/$1'; //open dashboard
+$route['admin/journal-article/list'] = 'JournalArticle/lists'; //open dashboard
+$route['admin/journal-article/list/(:any)'] = 'JournalArticle/lists/$1'; //open dashboard
+$route['admin/journal-article/delete/(:any)'] = 'JournalArticle/delete/$1'; //open dashboard
 
 //journal
-$route['journal/create'] = 'Journal/create'; //open dashboard
-$route['journal/store'] = 'Journal/store'; //open dashboard
-$route['journal/edit/(:any)'] = 'Journal/edit/$1'; //open dashboard
-$route['journal/update/(:any)'] = 'Journal/update/$1'; //open dashboard
-$route['journal/list'] = 'Journal/lists'; //open dashboard
-$route['journal/list/(:any)'] = 'Journal/lists/$1'; //open dashboard
-$route['journal/delete/(:any)'] = 'Journal/delete/$1'; //open dashboard
+$route['admin/journal/create'] = 'Journal/create'; //open dashboard
+$route['admin/journal/store'] = 'Journal/store'; //open dashboard
+$route['admin/journal/edit/(:any)'] = 'Journal/edit/$1'; //open dashboard
+$route['admin/journal/update/(:any)'] = 'Journal/update/$1'; //open dashboard
+$route['admin/journal/list'] = 'Journal/lists'; //open dashboard
+$route['admin/journal/list/(:any)'] = 'Journal/lists/$1'; //open dashboard
+$route['admin/journal/delete/(:any)'] = 'Journal/delete/$1'; //open dashboard

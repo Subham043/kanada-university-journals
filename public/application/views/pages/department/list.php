@@ -38,7 +38,7 @@
                                         <div class="row g-4 mb-3">
                                             <div class="col-sm-auto">
                                                 <div>
-                                                    <a href="<?php echo base_url('department/create'); ?>"
+                                                    <a href="<?php echo base_url('admin/department/create'); ?>"
                                                         style="background:green;border-color:green;" type="button"
                                                         class="btn btn-success add-btn" id="create-btn"><i
                                                             class="ri-add-line align-bottom me-1"></i> Create</a>
@@ -69,7 +69,7 @@
                                                         <td>
                                                             <div class="d-flex gap-2">
                                                                 <div class="edit">
-                                                                    <a href="<?php echo base_url('department/edit/'.$this->encryption_url->safe_b64encode($item->id)); ?>"
+                                                                    <a href="<?php echo base_url('admin/department/edit/'.$this->encryption_url->safe_b64encode($item->id)); ?>"
                                                                         style="background:yellow;color:black;border-color:yellow;"
                                                                         class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                                 </div>
@@ -77,7 +77,7 @@
                                                                     <button
                                                                         class="btn btn-sm btn-danger remove-item-btn"
                                                                         style="background:red"
-                                                                        onclick="deleteHandler('<?php echo base_url('department/delete/'.$this->encryption_url->safe_b64encode($item->id)); ?>')">Delete</button>
+                                                                        onclick="deleteHandler('<?php echo base_url('admin/department/delete/'.$this->encryption_url->safe_b64encode($item->id)); ?>')">Delete</button>
                                                                 </div>
                                                             </div>
                                                         </td>

@@ -84,10 +84,10 @@ class Publisher extends CI_Controller {
             $request['address'] = $this->input->post('address');
             if ($this->m_publisher->create($request)) {
                 $this->session->set_flashdata('success', 'Publisher created Successfully');
-                redirect('publisher/create', 'refresh');
+                redirect('admin/publisher/create', 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
-                redirect('publisher/create', 'refresh');
+                redirect('admin/publisher/create', 'refresh');
             }
         }else{
             $this->load->view('pages/publisher/create.php', $data);
@@ -132,10 +132,10 @@ class Publisher extends CI_Controller {
             $request['address'] = $this->input->post('address');
             if ($this->m_publisher->update($publisher_id, $request)!=FALSE) {
                 $this->session->set_flashdata('success', 'Publisher update Successfully');
-                redirect('publisher/edit/'.$this->encryption_url->safe_b64encode($publisher_id), 'refresh');
+                redirect('admin/publisher/edit/'.$this->encryption_url->safe_b64encode($publisher_id), 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
-                redirect('publisher/edit/'.$this->encryption_url->safe_b64encode($publisher_id), 'refresh');
+                redirect('admin/publisher/edit/'.$this->encryption_url->safe_b64encode($publisher_id), 'refresh');
             }
         }else{
             $this->load->view('pages/publisher/edit.php', $data);

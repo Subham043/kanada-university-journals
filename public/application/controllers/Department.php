@@ -76,10 +76,10 @@ class Department extends CI_Controller {
             $request['name'] = $this->input->post('name');
             if ($this->m_department->create($request)) {
                 $this->session->set_flashdata('success', 'Department created Successfully');
-                redirect('department/create', 'refresh');
+                redirect('admin/department/create', 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
-                redirect('department/create', 'refresh');
+                redirect('admin/department/create', 'refresh');
             }
         }else{
             $this->load->view('pages/department/create.php', $data);
@@ -114,10 +114,10 @@ class Department extends CI_Controller {
             $request['name'] = $this->input->post('name');
             if ($this->m_department->update($department_id, $request)!=FALSE) {
                 $this->session->set_flashdata('success', 'Department update Successfully');
-                redirect('department/edit/'.$this->encryption_url->safe_b64encode($department_id), 'refresh');
+                redirect('admin/department/edit/'.$this->encryption_url->safe_b64encode($department_id), 'refresh');
             } else {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
-                redirect('department/edit/'.$this->encryption_url->safe_b64encode($department_id), 'refresh');
+                redirect('admin/department/edit/'.$this->encryption_url->safe_b64encode($department_id), 'refresh');
             }
         }else{
             $this->load->view('pages/department/edit.php', $data);
