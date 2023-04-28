@@ -104,32 +104,6 @@
     <script src="<?php echo base_url('assets/admin/js/main.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/choices.min.js'); ?>"></script>
 
-    <script type="text/javascript" nonce="<?php echo $nonce; ?>">
-        const departmentChoice = new Choices('#department_id', {
-            choices: [
-                {
-                    value: '',
-                    label: 'Select a department',
-                    <?php if(empty($this->input->get('department'))){ ?>
-                        selected: true,
-                        disabled: true,
-                    <?php } ?>
-                },
-                <?php foreach($department as $department){ ?>
-                    {
-                        value: '<?php echo $department->code; ?>',
-                        label: '<?php echo $department->name; ?> ~ <?php echo $department->code; ?>',
-                        <?php if(!empty($this->input->get('department'))){ ?>
-                            selected: <?php echo $department->code == $this->input->get('department') ? 'true' : 'false'; ?>,
-                        <?php } ?>
-                    },
-                <?php } ?>
-            ],
-            placeholderValue: 'Select a department',
-            ...CHOICE_CONFIG
-        });
-    </script>
-
 
 </body>
 
