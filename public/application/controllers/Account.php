@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Account extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
@@ -11,6 +13,9 @@ class Account extends CI_Controller {
     
         $this->load->model('m_account');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
         
     }
     /**
@@ -20,6 +25,7 @@ class Account extends CI_Controller {
 	public function profile()
 	{
 		$data['title'] = 'Profile - Kannada University';
+        $data['nonce'] = $this->nonce;
         $this->session->set_flashdata('tab', 'profile');
         $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
         $this->load->view('pages/auth/profile.php', $data);
@@ -35,6 +41,7 @@ class Account extends CI_Controller {
     public function password_update()
     {
         $data['title'] = 'Profile - Kannada University';
+        $data['nonce'] = $this->nonce;
 
         $this->security->xss_clean($_POST);
         $this->form_validation->set_rules('crpassword', 'Current Password', 'callback_passwordcheck');
@@ -99,6 +106,7 @@ class Account extends CI_Controller {
     public function profile_update()
     {
         $data['title'] = 'Profile - Kannada University';
+        $data['nonce'] = $this->nonce;
         $this->security->xss_clean($_POST);
         $data['admin'] = $this->m_account->account($this->session->userdata('admin_id'));
 

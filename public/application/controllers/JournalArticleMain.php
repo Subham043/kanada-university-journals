@@ -3,12 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class JournalArticleMain extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
         parent::__construct();
     
         $this->load->model('m_journal_article');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
 
     }
     /**
@@ -20,6 +25,7 @@ class JournalArticleMain extends CI_Controller {
 	{
 		$data['title'] = 'Journal Article - Kannada University';
 		$data['page_name'] = 'Journal Article';
+        $data['nonce'] = $this->nonce;
 
         $this->load->library('pagination');
 

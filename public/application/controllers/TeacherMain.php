@@ -2,13 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TeacherMain extends CI_Controller {
+    
+    private string $nonce;
 
 	/*--construct--*/
     public function __construct()
     {
         parent::__construct();
-    
+
+        
         $this->load->model('m_teacher');
+        
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
 
     }
     /**
@@ -52,6 +58,8 @@ class TeacherMain extends CI_Controller {
 
         $this->load->model('m_department');
         $data['department'] = $this->m_department->get_all();
+
+        $data['nonce'] = $this->nonce;
 
         $this->load->view('pages/teacher/main-list.php', $data);
     }
@@ -101,6 +109,9 @@ class TeacherMain extends CI_Controller {
 
         $data['title'] = 'Teacher - Kannada University';
 		$data['page_name'] = 'Teacher';
+
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/teacher/main-journal-article.php', $data);
     }
     
@@ -149,6 +160,9 @@ class TeacherMain extends CI_Controller {
 
         $data['title'] = 'Teacher - Kannada University';
 		$data['page_name'] = 'Teacher';
+
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/teacher/main-book-article.php', $data);
     }
     
@@ -197,6 +211,9 @@ class TeacherMain extends CI_Controller {
 
         $data['title'] = 'Teacher - Kannada University';
 		$data['page_name'] = 'Teacher';
+
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/teacher/main-journal.php', $data);
     }
     
@@ -245,6 +262,9 @@ class TeacherMain extends CI_Controller {
 
         $data['title'] = 'Teacher - Kannada University';
 		$data['page_name'] = 'Teacher';
+
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/teacher/main-book.php', $data);
     }
     
@@ -292,6 +312,9 @@ class TeacherMain extends CI_Controller {
         
         $data['title'] = 'Teacher - Kannada University';
 		$data['page_name'] = 'Teacher';
+
+        $data['nonce'] = $this->nonce;
+        
         $this->load->view('pages/teacher/main-conference-proceedings.php', $data);
     }
 

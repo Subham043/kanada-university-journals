@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class JournalArticle extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
@@ -11,6 +13,9 @@ class JournalArticle extends CI_Controller {
     
         $this->load->model('m_journal_article');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
     }
     /**
      * Admin login-> load view page
@@ -21,6 +26,7 @@ class JournalArticle extends CI_Controller {
 	{
 		$data['title'] = 'Journal/Article - Kannada University';
 		$data['page_name'] = 'Journal/Article';
+        $data['nonce'] = $this->nonce;
 
         $this->load->library('pagination');
 
@@ -65,6 +71,7 @@ class JournalArticle extends CI_Controller {
         $data['editor'] = $data['teacher'];
         $data['keyword'] = $this->m_keyword->get_all();
         $data['publisher'] = $this->m_publisher->get_all();
+        $data['nonce'] = $this->nonce;
         $this->load->view('pages/journal_article/create.php', $data);
     }
 
@@ -269,6 +276,7 @@ class JournalArticle extends CI_Controller {
 		$data['title'] = 'Journal/Article - Kannada University';
 		$data['page_name'] = 'Journal/Article';
 		$data['id'] = $id;
+        $data['nonce'] = $this->nonce;
 
         $article_id = $this->encryption_url->safe_b64decode($id);
         $data['data'] = $this->m_journal_article->get_data($article_id);

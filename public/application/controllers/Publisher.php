@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Publisher extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
@@ -11,6 +13,9 @@ class Publisher extends CI_Controller {
     
         $this->load->model('m_publisher');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
 
     }
     /**
@@ -52,6 +57,8 @@ class Publisher extends CI_Controller {
 
         $data['data'] = $this->m_publisher->get_list($config["per_page"], $page);
 
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/publisher/list.php', $data);
     }
 
@@ -59,6 +66,7 @@ class Publisher extends CI_Controller {
 	{
 		$data['title'] = 'Publisher - Kannada University';
 		$data['page_name'] = 'Publisher';
+        $data['nonce'] = $this->nonce;
 
         $this->security->xss_clean($_POST);
         $this->form_validation->set_rules('code', 'Publisher Code', 'trim|required|min_length[3]|max_length[200]|is_unique[publisher.code]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s', 'is_unique'=>'This publisher code is already in use'));
@@ -92,6 +100,7 @@ class Publisher extends CI_Controller {
 		$data['title'] = 'Publisher - Kannada University';
 		$data['page_name'] = 'Publisher';
 		$data['id'] = $id;
+        $data['nonce'] = $this->nonce;
 
         $publisher_id = $this->encryption_url->safe_b64decode($id);
         $data['data'] = $this->m_publisher->get_data($publisher_id);

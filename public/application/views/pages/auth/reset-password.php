@@ -86,7 +86,7 @@
     <?php $this->load->view('includes/common_script'); ?>
 
     <script src="{{ asset('admin/js/pages/password-addon.init.js') }}"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="<?php echo $nonce; ?>">
 
         // initialize the validation library
         const validation = new JustValidate('#loginForm', {

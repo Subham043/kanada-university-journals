@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Keyword extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
@@ -11,6 +13,9 @@ class Keyword extends CI_Controller {
     
         $this->load->model('m_keyword');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
 
     }
     /**
@@ -22,6 +27,7 @@ class Keyword extends CI_Controller {
 	{
 		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
+        $data['nonce'] = $this->nonce;
 
         $this->load->library('pagination');
 
@@ -59,6 +65,7 @@ class Keyword extends CI_Controller {
 	{
 		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
+        $data['nonce'] = $this->nonce;
 
         $this->security->xss_clean($_POST);
         $this->form_validation->set_rules('code', 'Keyword Code', 'trim|required|min_length[3]|max_length[200]|is_unique[keyword.code]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s', 'is_unique'=>'This keyword code is already in use'));
@@ -84,6 +91,7 @@ class Keyword extends CI_Controller {
 		$data['title'] = 'Keyword - Kannada University';
 		$data['page_name'] = 'Keyword';
 		$data['id'] = $id;
+        $data['nonce'] = $this->nonce;
 
         $keyword_id = $this->encryption_url->safe_b64decode($id);
         $data['data'] = $this->m_keyword->get_data($keyword_id);

@@ -9,7 +9,7 @@
     <script src="<?php echo base_url('assets/admin/libs/feather-icons/feather.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/plugins/lord-icon-2.1.0.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/axios.min.js'); ?>"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="<?php echo $nonce; ?>">
         const errorToast = (message) => {
             iziToast.error({
                 title: 'Error',
@@ -118,7 +118,7 @@
                 </span>
             `;
     </script>
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="<?php echo $nonce; ?>">
         <?php if ($this->session->flashdata('success')) { ?>
 
             successToast('<?php echo $this->session->flashdata('success') ?>');

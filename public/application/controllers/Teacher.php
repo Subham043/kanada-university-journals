@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Teacher extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
@@ -11,6 +13,9 @@ class Teacher extends CI_Controller {
     
         $this->load->model('m_teacher');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
 
     }
     /**
@@ -52,6 +57,8 @@ class Teacher extends CI_Controller {
 
         $data['data'] = $this->m_teacher->get_list($config["per_page"], $page);
 
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/teacher/list.php', $data);
     }
 
@@ -63,6 +70,7 @@ class Teacher extends CI_Controller {
 		$data['page_name'] = 'Teacher';
         $data['department'] = $this->m_department->get_all();
         $data['designation'] = $this->m_designation->get_all();
+        $data['nonce'] = $this->nonce;
         $this->load->view('pages/teacher/create.php', $data);
     }
 
@@ -187,6 +195,7 @@ class Teacher extends CI_Controller {
         $this->load->model('m_designation');
         $data['department'] = $this->m_department->get_all();
         $data['designation'] = $this->m_designation->get_all();
+        $data['nonce'] = $this->nonce;
         $this->load->view('pages/teacher/edit.php', $data);
 
     }

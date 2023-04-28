@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Conference extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
@@ -11,6 +13,9 @@ class Conference extends CI_Controller {
     
         $this->load->model('m_conference');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
 
     }
     /**
@@ -52,6 +57,8 @@ class Conference extends CI_Controller {
 
         $data['data'] = $this->m_conference->get_list($config["per_page"], $page);
 
+        $data['nonce'] = $this->nonce;
+
         $this->load->view('pages/conference/list.php', $data);
     }
 
@@ -63,6 +70,7 @@ class Conference extends CI_Controller {
 		$data['page_name'] = 'Conference';
         $data['teacher'] = $this->m_teacher->get_all();
         $data['keyword'] = $this->m_keyword->get_all();
+        $data['nonce'] = $this->nonce;
         $this->load->view('pages/conference/create.php', $data);
     }
 
@@ -202,6 +210,7 @@ class Conference extends CI_Controller {
 		$data['title'] = 'Conference - Kannada University';
 		$data['page_name'] = 'Conference';
 		$data['id'] = $id;
+        $data['nonce'] = $this->nonce;
 
         $conference_id = $this->encryption_url->safe_b64decode($id);
         $data['data'] = $this->m_conference->get_data($conference_id);

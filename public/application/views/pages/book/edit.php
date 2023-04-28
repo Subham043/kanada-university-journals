@@ -458,7 +458,7 @@
     <script src="<?php echo base_url('assets/admin/js/main.js'); ?>"></script>
     <script src="<?php echo base_url('assets/admin/js/pages/choices.min.js'); ?>"></script>
 
-    <script type="text/javascript">
+    <script type="text/javascript" nonce="<?php echo $nonce; ?>">
         (function( $ ) {
             $(document).ready(function() {
                 $('.repeater-teacher').repeater({

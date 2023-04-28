@@ -3,12 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Authentication extends CI_Controller {
 
+    private string $nonce;
+
 	/*--construct--*/
     public function __construct()
     {
         parent::__construct();
         $this->load->model('m_authentication');
         $this->load->library('form_validation');
+
+        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com");
+
         if ($this->session->userdata('admin_id') != '') {
             redirect('dashboard');
         }
@@ -23,6 +29,7 @@ class Authentication extends CI_Controller {
 	public function index()
 	{
         $data['title'] = 'Login - Kannada University';
+        $data['nonce'] = $this->nonce;
 
         $this->form_validation->set_rules('email', 
         'Email',
@@ -60,6 +67,7 @@ class Authentication extends CI_Controller {
 	public function forgot_password()
 	{
 		$data['title'] = 'Forgot Password - Kannada University';
+        $data['nonce'] = $this->nonce;
 
         $this->form_validation->set_rules(
             'email', 
@@ -109,6 +117,7 @@ class Authentication extends CI_Controller {
 	public function reset_password($id)
 	{
 		$data['title'] = 'Reset Password - Kannada University';
+        $data['nonce'] = $this->nonce;
         
         $user_id = $this->encryption_url->safe_b64decode($id);
         if($this->m_authentication->checkChangePasswordActive($user_id)==false){
