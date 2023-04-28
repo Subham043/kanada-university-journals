@@ -247,6 +247,42 @@ class M_book extends CI_Model {
 
         return $query->result();
     }
+	
+	public function get_main_count($search = null) {
+		$this->db->select('book.id');
+		$this->db->from('book_teacher');
+		$this->db->join('book','book_teacher.book_id = book.id');
+		$this->db->join('teacher','book_teacher.teacher_id = teacher.id');
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('book.title', $search, 'both');
+			$this->db->or_like('book.edition', $search, 'both');
+			$this->db->or_like('book.isbn', $search, 'both');
+			$this->db->or_like('book.name', $search, 'both');
+		}
+		return $this->db->get()->num_rows();
+    }
+
+    public function get_main_list($limit, $start, $search = null) {
+        $this->db->select('book.*, publisher.name as publisher_name,GROUP_CONCAT(CONCAT(teacher.prefix, ". ", teacher.first_name, " ",teacher.last_name) SEPARATOR ", ") as first_last_name');
+        $this->db->limit($limit, $start);
+		$this->db->from('book_teacher');
+		$this->db->join('book','book_teacher.book_id = book.id');
+		$this->db->join('teacher','book_teacher.teacher_id = teacher.id');
+		$this->db->join('publisher','publisher.id = book.publisher_id');
+		$this->db->group_by('book_teacher.book_id'); 
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('book.title', $search, 'both');
+			$this->db->or_like('book.edition', $search, 'both');
+			$this->db->or_like('book.isbn', $search, 'both');
+			$this->db->or_like('book.name', $search, 'both');
+		}
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 }
 

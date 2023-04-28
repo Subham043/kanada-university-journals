@@ -34,8 +34,33 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link <?php echo strpos(current_url(),'designation') !== false ? 'active' : ''; ?>" href="<?php echo base_url('admin/designation/list'); ?>">
-                                    <i class="ri-file-user-fill"></i> <span data-key="t-widgets">Designation</span>
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'teacher') !== false ? 'active' : ''; ?>" href="<?php echo base_url('teacher'); ?>">
+                                    <i class="ri-file-user-fill"></i> <span data-key="t-widgets">Teachers</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'book') !== false ? 'active' : ''; ?>" href="<?php echo base_url('book'); ?>">
+                                    <i class="ri-contacts-book-2-line"></i> <span data-key="t-widgets">Books</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'book-article') !== false ? 'active' : ''; ?>" href="<?php echo base_url('book-article'); ?>">
+                                    <i class="ri-article-fill"></i> <span data-key="t-widgets">Book Articles</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'journal') !== false ? 'active' : ''; ?>" href="<?php echo base_url('journal'); ?>">
+                                    <i class="ri-newspaper-line"></i> <span data-key="t-widgets">Journal</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'journal-article') !== false ? 'active' : ''; ?>" href="<?php echo base_url('journal-article'); ?>">
+                                    <i class="ri-article-fill"></i> <span data-key="t-widgets">Journal Articles</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'conference-proceedings') !== false ? 'active' : ''; ?>" href="<?php echo base_url('conference-proceedings'); ?>">
+                                    <i class="ri-account-pin-box-fill"></i> <span data-key="t-widgets">Conference Proceedings</span>
                                 </a>
                             </li>
                         </ul>

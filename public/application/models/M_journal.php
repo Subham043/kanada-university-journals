@@ -162,6 +162,42 @@ class M_journal extends CI_Model {
         return $query->result();
     }
 
+	public function get_main_count($search = null) {
+		$this->db->select('journal.id');
+		$this->db->from('journal_teacher');
+		$this->db->join('journal','journal_teacher.journal_id = journal.id');
+		$this->db->join('teacher','journal_teacher.teacher_id = teacher.id');
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('journal.title', $search, 'both');
+			$this->db->or_like('journal.edition', $search, 'both');
+			$this->db->or_like('journal.isbn', $search, 'both');
+			$this->db->or_like('journal.name', $search, 'both');
+		}
+		return $this->db->get()->num_rows();
+    }
+
+    public function get_main_list($limit, $start, $search = null) {
+        $this->db->select('journal.*, publisher.name as publisher_name,GROUP_CONCAT(CONCAT(teacher.prefix, ". ", teacher.first_name, " ",teacher.last_name) SEPARATOR ", ") as first_last_name');
+        $this->db->limit($limit, $start);
+		$this->db->from('journal_teacher');
+		$this->db->join('journal','journal_teacher.journal_id = journal.id');
+		$this->db->join('teacher','journal_teacher.teacher_id = teacher.id');
+		$this->db->join('publisher','publisher.id = journal.publisher_id');
+		$this->db->group_by('journal_teacher.journal_id'); 
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('journal.title', $search, 'both');
+			$this->db->or_like('journal.edition', $search, 'both');
+			$this->db->or_like('journal.isbn', $search, 'both');
+			$this->db->or_like('journal.name', $search, 'both');
+		}
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 }
 
 /* End of file M_account.php */

@@ -146,6 +146,9 @@ $route['admin/book-article/list'] = 'BookArticle/lists'; //open dashboard
 $route['admin/book-article/list/(:any)'] = 'BookArticle/lists/$1'; //open dashboard
 $route['admin/book-article/delete/(:any)'] = 'BookArticle/delete/$1'; //open dashboard
 
+$route['book-article'] = 'BookArticleMain/lists'; //open dashboard
+$route['book-article/(:any)'] = 'BookArticleMain/lists/$1'; //open dashboard
+
 //book
 $route['admin/book/create'] = 'Book/create'; //open dashboard
 $route['admin/book/store'] = 'Book/store'; //open dashboard
@@ -154,6 +157,9 @@ $route['admin/book/update/(:any)'] = 'Book/update/$1'; //open dashboard
 $route['admin/book/list'] = 'Book/lists'; //open dashboard
 $route['admin/book/list/(:any)'] = 'Book/lists/$1'; //open dashboard
 $route['admin/book/delete/(:any)'] = 'Book/delete/$1'; //open dashboard
+
+$route['book'] = 'BookMain/lists'; //open dashboard
+$route['book/(:any)'] = 'BookMain/lists/$1'; //open dashboard
 
 //journal-article
 $route['admin/journal-article/create'] = 'JournalArticle/create'; //open dashboard
@@ -164,6 +170,9 @@ $route['admin/journal-article/list'] = 'JournalArticle/lists'; //open dashboard
 $route['admin/journal-article/list/(:any)'] = 'JournalArticle/lists/$1'; //open dashboard
 $route['admin/journal-article/delete/(:any)'] = 'JournalArticle/delete/$1'; //open dashboard
 
+$route['journal-article'] = 'JournalArticleMain/lists'; //open dashboard
+$route['journal-article/(:any)'] = 'JournalArticleMain/lists/$1'; //open dashboard
+
 //journal
 $route['admin/journal/create'] = 'Journal/create'; //open dashboard
 $route['admin/journal/store'] = 'Journal/store'; //open dashboard
@@ -172,3 +181,6 @@ $route['admin/journal/update/(:any)'] = 'Journal/update/$1'; //open dashboard
 $route['admin/journal/list'] = 'Journal/lists'; //open dashboard
 $route['admin/journal/list/(:any)'] = 'Journal/lists/$1'; //open dashboard
 $route['admin/journal/delete/(:any)'] = 'Journal/delete/$1'; //open dashboard
+
+$route['journal'] = 'JournalMain/lists'; //open dashboard
+$route['journal/(:any)'] = 'JournalMain/lists/$1'; //open dashboard

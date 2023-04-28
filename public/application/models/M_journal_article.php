@@ -164,6 +164,42 @@ class M_journal_article extends CI_Model {
         return $query->result();
     }
 
+	public function get_main_count($search = null) {
+		$this->db->select('journal_article.id');
+		$this->db->from('journal_article_teacher');
+		$this->db->join('journal_article','journal_article_teacher.journal_article_id = journal_article.id');
+		$this->db->join('teacher','journal_article_teacher.teacher_id = teacher.id');
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('journal_article.title', $search, 'both');
+			$this->db->or_like('journal_article.edition', $search, 'both');
+			$this->db->or_like('journal_article.isbn', $search, 'both');
+			$this->db->or_like('journal_article.name', $search, 'both');
+		}
+		return $this->db->get()->num_rows();
+    }
+
+    public function get_main_list($limit, $start, $search = null) {
+        $this->db->select('journal_article.*, publisher.name as publisher_name,GROUP_CONCAT(CONCAT(teacher.prefix, ". ", teacher.first_name, " ",teacher.last_name) SEPARATOR ", ") as first_last_name');
+        $this->db->limit($limit, $start);
+		$this->db->from('journal_article_teacher');
+		$this->db->join('journal_article','journal_article_teacher.journal_article_id = journal_article.id');
+		$this->db->join('teacher','journal_article_teacher.teacher_id = teacher.id');
+		$this->db->join('publisher','publisher.id = journal_article.publisher_id');
+		$this->db->group_by('journal_article_teacher.journal_article_id'); 
+		if(!empty($search)){
+			$this->db->like('teacher.first_name', $search, 'both');
+			$this->db->or_like('teacher.last_name', $search, 'both');
+			$this->db->or_like('journal_article.title', $search, 'both');
+			$this->db->or_like('journal_article.edition', $search, 'both');
+			$this->db->or_like('journal_article.isbn', $search, 'both');
+			$this->db->or_like('journal_article.name', $search, 'both');
+		}
+        $query = $this->db->get();
+        return $query->result();
+    }
+
 }
 
 /* End of file M_account.php */
