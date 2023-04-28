@@ -11,15 +11,7 @@ class Publisher extends CI_Controller {
     
         $this->load->model('m_publisher');
         $this->load->library('form_validation');
-        header_remove("X-Powered-By"); 
-        header("X-Frame-Options: DENY");
-        header("X-XSS-Protection: 1; mode=block");
-        header("X-Content-Type-Options: nosniff");
-        header("Strict-Transport-Security: max-age=31536000");
-        header("Content-Security-Policy: frame-ancestors none");
-        header("Referrer-Policy: no-referrer-when-downgrade");
-        header("Cache-Control: no-cache, must-revalidate"); //HTTP 1.1
-        header("Pragma: no-cache"); //HTTP 1.0
+
     }
     /**
      * Admin login-> load view page
