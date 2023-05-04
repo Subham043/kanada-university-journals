@@ -109,7 +109,7 @@
                                                 <div class="team-list row grid-view-filter" id="team-member-list">
                                                     <ol class="mb-0 sub-menu ps-3 vstack gap-2 mb-2">
                                                         <?php foreach ($conference as $item) { ?>
-                                                            <li class="mb-2"><?php echo $data->prefix; ?>. <?php echo $data->first_name; ?> <?php echo $data->last_name; ?>, <?php echo date('Y', strtotime($item->date)); ?>, <?php echo $item->title; ?>, <?php echo $item->name; ?>(<?php echo $item->edition; ?>), <?php echo $item->publisher_name; ?>, <?php echo $item->isbn; ?></li>
+                                                            <li class="mb-2"><?php echo $data->prefix; ?>. <?php echo $data->first_name; ?> <?php echo $data->last_name; ?>, <?php echo date('Y', strtotime($item->date)); ?>, <?php echo $item->title; ?>, <a href="<?php echo $item->link; ?>" target="_blank"><?php echo $item->name; ?></a> (<?php echo $item->edition; ?>), <?php echo $item->publisher_name; ?>, <?php echo $item->isbn; ?></li>
                                                         <?php } ?>
                                                     </ol>
                                                     <?php echo $links; ?>

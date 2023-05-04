@@ -22,20 +22,13 @@
 
             <div class="page-content">
                 <div class="container-fluid">
+                    <div class="position-relative mx-n4 mt-n4">
+                        <div class="profile-wid-bg profile-setting-img">
+                            <img src="<?php echo base_url('assets/admin/images/logo.png'); ?>" class="profile-wid-img" alt="">
+                        </div>
+                    </div>
                     <div class="row project-wrapper">
                         <div class="col-xxl-12">
-                            <div class="card">
-                                <div class="card-header align-items-center border-0 d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Kannada University</h4>
-                                    <div class="flex-shrink-0">
-                                        <ul class="nav justify-content-end nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <a type="button" href="<?php echo base_url(); ?>" class="btn btn-success btn-label"><i class="ri-restart-line label-icon align-middle fs-16 me-2"></i> Refresh</a>
-                                            </li>
-                                        </ul><!-- end ul -->
-                                    </div>
-                                </div>
-                            </div>
                             <div class="card-body p-0">
                                 <div class="p-3">
                                     <div class="row">
@@ -156,7 +149,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-sm flex-shrink-0">
                                                             <span class="avatar-title bg-soft-success text-success rounded-2 fs-2">
-                                                                <i class="ri-file-user-fill text-success"></i>
+                                                                <i class="ri-user-star-fill text-success"></i>
                                                             </span>
                                                         </div>
                                                         <div class="flex-grow-1 ms-3">
@@ -178,7 +171,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-sm flex-shrink-0">
                                                             <span class="avatar-title bg-soft-success text-success rounded-2 fs-2">
-                                                                <i class="ri-check-double-line text-success"></i>
+                                                                <i class="ri-file-user-line text-success"></i>
                                                             </span>
                                                         </div>
                                                         <div class="flex-grow-1 ms-3">

@@ -35,7 +35,12 @@
                             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                             <li class="nav-item">
                                 <a class="nav-link menu-link <?php echo strpos(current_url(),'teacher') !== false ? 'active' : ''; ?>" href="<?php echo base_url('teacher'); ?>">
-                                    <i class="ri-file-user-fill"></i> <span data-key="t-widgets">Teachers</span>
+                                    <i class="ri-user-star-fill"></i> <span data-key="t-widgets">Teachers</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'department') !== false ? 'active' : ''; ?>" href="<?php echo base_url('department'); ?>">
+                                    <i class="ri-file-user-fill"></i> <span data-key="t-widgets">Departments</span>
                                 </a>
                             </li>
                             <li class="nav-item">

@@ -88,6 +88,14 @@ $route['admin/department/list'] = 'Department/lists'; //open dashboard
 $route['admin/department/list/(:any)'] = 'Department/lists/$1'; //open dashboard
 $route['admin/department/delete/(:any)'] = 'Department/delete/$1'; //open dashboard
 
+$route['department'] = 'DepartmentMain/lists'; //open dashboard
+$route['department/(:any)'] = 'DepartmentMain/lists/$1'; //open dashboard
+$route['department/(:any)/journal-articles'] = 'DepartmentMain/journal_articles/$1'; //open dashboard
+$route['department/(:any)/book-articles'] = 'DepartmentMain/book_articles/$1'; //open dashboard
+$route['department/(:any)/journal'] = 'DepartmentMain/journal/$1'; //open dashboard
+$route['department/(:any)/book'] = 'DepartmentMain/book/$1'; //open dashboard
+$route['department/(:any)/conference-proceedings'] = 'DepartmentMain/conference_proceedings/$1'; //open dashboard
+
 
 //designation
 $route['admin/designation/create'] = 'Designation/create'; //open dashboard
