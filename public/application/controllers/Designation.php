@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Designation extends CI_Controller {
 
-    private string $nonce;
+    private $nonce;
 
 	/*--construct--*/
     public function __construct()
@@ -14,7 +14,7 @@ class Designation extends CI_Controller {
         $this->load->model('m_designation');
         $this->load->library('form_validation');
 
-        $this->nonce = hash('sha256', bin2hex(random_bytes(10)));
+        $this->nonce = hash('sha256', bin2hex(rand()));
         header("Content-Security-Policy: base-uri 'self';connect-src 'self';default-src 'self';form-action 'self';img-src 'self' data:;media-src 'self';object-src 'none';script-src 'self' 'nonce-".$this->nonce."';style-src 'unsafe-inline' 'self' fonts.googleapis.com;frame-src 'self';font-src 'self' data: fonts.gstatic.com;frame-ancestors 'self'");
 
     }
