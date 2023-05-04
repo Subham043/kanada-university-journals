@@ -66,6 +66,8 @@ class Conference extends CI_Controller {
     {
         $this->load->model('m_teacher');
         $this->load->model('m_keyword');
+        $this->load->model('m_department');
+        $data['department'] = $this->m_department->get_all();
         $data['title'] = 'Conference - Kannada University';
 		$data['page_name'] = 'Conference';
         $data['teacher'] = $this->m_teacher->get_all();
@@ -90,6 +92,7 @@ class Conference extends CI_Controller {
             $this->form_validation->set_rules('link', 'Conference Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('teacher_id', 'Teacher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
+            $this->form_validation->set_rules('department_id', 'Teacher Department', 'trim|required|numeric');
             if($this->form_validation->run()){
                 
                 $config['upload_path']          = $_SERVER['DOCUMENT_ROOT'].'/assets/conference/abstract';
@@ -159,6 +162,7 @@ class Conference extends CI_Controller {
                 $request['link'] = $this->input->post('link');
                 $request['teacher_id'] = $this->input->post('teacher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
+                $request['department_id'] = $this->input->post('department_id');
                 if ($this->m_conference->create($request)) {
                     return $this->output
                     ->set_content_type('application/json')
@@ -191,6 +195,7 @@ class Conference extends CI_Controller {
                         'link' => form_error('link'),
                         'teacher_id' => form_error('teacher_id'),
                         'keyword_id' => form_error('keyword_id'),
+                        'department_id' => form_error('department_id'),
                     ),
                 ]));
             }
@@ -221,6 +226,8 @@ class Conference extends CI_Controller {
 
         $this->load->model('m_teacher');
         $this->load->model('m_keyword');
+        $this->load->model('m_department');
+        $data['department'] = $this->m_department->get_all();
         $data['teacher'] = $this->m_teacher->get_all();
         $data['keyword'] = $this->m_keyword->get_all();
         $this->load->view('pages/conference/edit.php', $data);
@@ -253,6 +260,7 @@ class Conference extends CI_Controller {
             $this->form_validation->set_rules('link', 'Conference Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('teacher_id', 'Teacher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
+            $this->form_validation->set_rules('department_id', 'Teacher Department', 'trim|required|numeric');
 
             if($this->form_validation->run()){
 
@@ -335,6 +343,7 @@ class Conference extends CI_Controller {
                 $request['link'] = $this->input->post('link');
                 $request['teacher_id'] = $this->input->post('teacher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
+                $request['department_id'] = $this->input->post('department_id');
                 if ($this->m_conference->update($conference_id, $request)!=FALSE) {
                     return $this->output
                     ->set_content_type('application/json')
@@ -368,6 +377,7 @@ class Conference extends CI_Controller {
                         'link' => form_error('link'),
                         'teacher_id' => form_error('teacher_id'),
                         'keyword_id' => form_error('keyword_id'),
+                        'department_id' => form_error('department_id'),
                     ),
                 ]));
             }

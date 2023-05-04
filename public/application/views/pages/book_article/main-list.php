@@ -42,7 +42,7 @@
                                             <!--end col-->
                                             <div class="col-xl-5">
                                                 <div class="search-box">
-                                                    <input type="text" name="search" class="form-control search" placeholder="Search Conferences..." value="<?php echo $this->input->get('search') ?>"> 
+                                                    <input type="text" name="search" class="form-control search" placeholder="Search Book Articles..." value="<?php echo $this->input->get('search') ?>"> 
                                                     <i class="ri-search-line search-icon"></i>
                                                 </div>
                                             </div>
@@ -51,23 +51,24 @@
                                     </form>
                                     <!--end row-->
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 px-4">
-                                            <?php if (count($data)) { ?>
-                                            
-                                                <div class="team-list row grid-view-filter" id="team-member-list">
-                                                    <ol class="mb-0 sub-menu ps-3 vstack gap-2 mb-2">
-                                                        <?php foreach ($data as $item) { ?>
-                                                            <li class="mb-2"><?php echo $item->first_last_name; ?>, <?php echo date('Y', strtotime($item->date)); ?>, <?php echo $item->title; ?>, <?php echo $item->name; ?>(<?php echo $item->edition; ?>), <?php echo $item->publisher_name; ?>, <?php echo $item->isbn; ?></li>
-                                                        <?php } ?>
-                                                    </ol>
-                                                    <?php echo $links; ?>
-                                                </div>
-                                            <?php } else { ?>
-                                                <?php $this->load->view('includes/no_result'); ?>
-                                            <?php } ?>
-                                        </div>
+                            </div>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-12 px-4">
+                                        <?php if (count($data)) { ?>
+                                        
+                                            <div class="team-list row grid-view-filter" id="team-member-list">
+                                                <ol class="mb-0 sub-menu ps-3 vstack gap-2 mb-2 list-style-none">
+                                                    <?php $i=1; foreach ($data as $item) { ?>
+                                                        <li class="mb-2"><p class="font-12"><?php echo $i; $i++; ?>. <?php echo $item->first_last_name; ?>, <?php echo date('Y', strtotime($item->date)); ?>, <?php echo $item->title; ?>, <a href="<?php echo $item->link; ?>" target="_blank"><?php echo $item->name; ?></a> (<?php echo $item->edition; ?>), <?php echo $item->publisher_name; ?>, <?php echo $item->isbn; ?></p></li>
+                                                    <?php } ?>
+                                                </ol>
+                                                <?php echo $links; ?>
+                                            </div>
+                                        <?php } else { ?>
+                                            <?php $this->load->view('includes/no_result'); ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

@@ -99,14 +99,21 @@
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-xxl-6 col-md-6">
+                                                <div class="col-xxl-4 col-md-4">
+                                                    <div class="form-group mb-3">
+                                                        <label for="department_id" class="form-label"><?php echo $page_name; ?> Department</label>
+                                                        <select class="form-control" id="department_id" name="department_id"></select>
+                                                        <i class="invalid-message error"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xxl-4 col-md-4">
                                                     <div class="form-group mb-3">
                                                         <label for="publisher_id" class="form-label"><?php echo $page_name; ?> Publisher</label>
                                                         <select class="form-control" id="publisher_id" name="publisher_id"></select>
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-xxl-6 col-md-6">
+                                                <div class="col-xxl-4 col-md-4">
                                                     <div class="form-group mb-3">
                                                         <label for="keyword_id" class="form-label"><?php echo $page_name; ?> Keyword</label>
                                                         <select class="form-control" id="keyword_id" name="keyword_id"></select>
@@ -367,6 +374,9 @@
                         abstract: {
                             required: true
                         },
+                        department_id: {
+                            required: true,
+                        },
                     },
                     submitHandler: function(form) {
                         var submitBtn = document.getElementById('submitBtn')
@@ -384,6 +394,7 @@
                         formData.append('name', document.getElementById('name').value)
                         formData.append('publisher_id', document.getElementById('publisher_id').value)
                         formData.append('keyword_id', document.getElementById('keyword_id').value)
+                        formData.append('department_id', document.getElementById('department_id').value)
                         if((document.getElementById('image').files).length>0){
                             formData.append('image',document.getElementById('image').files[0])
                         }
@@ -538,6 +549,24 @@
                 <?php } ?>
             ],
             placeholderValue: 'Select a publisher',
+            ...CHOICE_CONFIG
+        });
+        const departmentChoice = new Choices('#department_id', {
+            choices: [
+                {
+                    value: '',
+                    label: 'Select a department',
+                    selected: true,
+                    disabled: true,
+                },
+                <?php foreach($department as $department){ ?>
+                    {
+                        value: '<?php echo $department->id; ?>',
+                        label: '<?php echo $department->name; ?> ~ <?php echo $department->code; ?>',
+                    },
+                <?php } ?>
+            ],
+            placeholderValue: 'Select a department',
             ...CHOICE_CONFIG
         });
 

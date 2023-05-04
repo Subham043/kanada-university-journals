@@ -67,6 +67,8 @@ class Journal extends CI_Controller {
         $this->load->model('m_teacher');
         $this->load->model('m_keyword');
         $this->load->model('m_publisher');
+        $this->load->model('m_department');
+        $data['department'] = $this->m_department->get_all();
         $data['title'] = 'Journal - Kannada University';
 		$data['page_name'] = 'Journal';
         $data['teacher'] = $this->m_teacher->get_all();
@@ -93,6 +95,7 @@ class Journal extends CI_Controller {
             $this->form_validation->set_rules('link', 'Journal Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('publisher_id', 'Publisher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
+            $this->form_validation->set_rules('department_id', 'Teacher Department', 'trim|required|numeric');
             $this->form_validation->set_rules('teacher_id[]', 'Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('co_editor_id[]', 'Co-Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('co_editor_name[]', 'Co-Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
@@ -173,6 +176,7 @@ class Journal extends CI_Controller {
                 $request['is_published'] = $this->input->post('is_published');
                 $request['publisher_id'] = $this->input->post('publisher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
+                $request['department_id'] = $this->input->post('department_id');
                 if ($id = $this->m_journal->create($request)) {
 
                     $this->m_journal->delete_teacher($id);
@@ -252,6 +256,7 @@ class Journal extends CI_Controller {
                         'link' => form_error('link'),
                         'keyword_id' => form_error('keyword_id'),
                         'publicher_id' => form_error('publicher_id'),
+                        'department_id' => form_error('department_id'),
                         'teacher_id[]' => form_error('teacher_id[]'),
                         'teacher_name[]' => form_error('teacher_name[]'),
                         'teacher_email[]' => form_error('teacher_email[]'),
@@ -304,6 +309,8 @@ class Journal extends CI_Controller {
         $this->load->model('m_teacher');
         $this->load->model('m_keyword');
         $this->load->model('m_publisher');
+        $this->load->model('m_department');
+        $data['department'] = $this->m_department->get_all();
         $data['teacher'] = $this->m_teacher->get_all();
         $data['co_editor'] = $data['teacher'];
         $data['keyword'] = $this->m_keyword->get_all();
@@ -338,6 +345,7 @@ class Journal extends CI_Controller {
             $this->form_validation->set_rules('link', 'Journal Web link KUH website', 'trim|required|min_length[2]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
             $this->form_validation->set_rules('publisher_id', 'Publisher', 'trim|required|numeric');
             $this->form_validation->set_rules('keyword_id', 'Keyword', 'trim|required|numeric');
+            $this->form_validation->set_rules('department_id', 'Teacher Department', 'trim|required|numeric');
             $this->form_validation->set_rules('teacher_id[]', 'Author', 'trim|required|numeric');
             $this->form_validation->set_rules('co_editor_id[]', 'Co-Editor', 'trim|required|numeric');
             $this->form_validation->set_rules('co_editor_name[]', 'Co-Editor Name', 'trim|min_length[3]|max_length[200]|regex_match[/^[a-z 0-9~%.:_\@\-\/\&+=,]+$/i]', array('regex_match' => 'Enter a valid %s'));
@@ -431,6 +439,7 @@ class Journal extends CI_Controller {
                 $request['is_published'] = $this->input->post('is_published');
                 $request['publisher_id'] = $this->input->post('publisher_id');
                 $request['keyword_id'] = $this->input->post('keyword_id');
+                $request['department_id'] = $this->input->post('department_id');
                 if ($this->m_journal->update($journal_id, $request)!=FALSE) {
 
                     $this->m_journal->delete_teacher($journal_id);
@@ -511,6 +520,7 @@ class Journal extends CI_Controller {
                         'link' => form_error('link'),
                         'keyword_id' => form_error('keyword_id'),
                         'publicher_id' => form_error('publicher_id'),
+                        'department_id' => form_error('department_id'),
                         'teacher_id[]' => form_error('teacher_id[]'),
                         'teacher_name[]' => form_error('teacher_name[]'),
                         'teacher_email[]' => form_error('teacher_email[]'),

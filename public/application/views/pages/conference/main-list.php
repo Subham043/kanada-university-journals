@@ -51,23 +51,24 @@
                                     </form>
                                     <!--end row-->
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 px-4">
-                                            <?php if (count($data)) { ?>
-                                            
-                                                <div class="team-list row grid-view-filter" id="team-member-list">
-                                                    <ol class="mb-0 sub-menu ps-3 vstack gap-2 mb-2">
-                                                        <?php foreach ($data as $item) { ?>
-                                                            <li class="mb-2"><?php echo $item->prefix; ?>. <?php echo $item->first_name; ?> <?php echo $item->last_name; ?>, <?php echo date('Y', strtotime($item->date)); ?>, <?php echo $item->title; ?>, <?php echo $item->conference; ?>, <?php echo $item->place; ?>, <?php echo $item->isbn; ?></li>
-                                                        <?php } ?>
-                                                    </ol>
-                                                    <?php echo $links; ?>
-                                                </div>
-                                            <?php } else { ?>
-                                                <?php $this->load->view('includes/no_result'); ?>
-                                            <?php } ?>
-                                        </div>
+                            </div>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-12 px-4">
+                                        <?php if (count($data)) { ?>
+                                        
+                                            <div class="team-list row grid-view-filter" id="team-member-list">
+                                                <ol class="mb-0 sub-menu ps-3 vstack gap-2 mb-2 list-style-none">
+                                                    <?php $i=1; foreach ($data as $item) { ?>
+                                                        <li class="mb-2"><p class="font-12"><?php echo $i; $i++; ?>. <?php echo $item->prefix; ?>. <?php echo $item->first_name; ?> <?php echo $item->last_name; ?>, <?php echo date('Y', strtotime($item->date)); ?>, <?php echo $item->title; ?>, <a href="<?php echo $item->link; ?>" target="_blank"><?php echo $item->conference; ?></a>, <?php echo $item->place; ?>, <?php echo $item->isbn; ?></p></li>
+                                                    <?php } ?>
+                                                </ol>
+                                                <?php echo $links; ?>
+                                            </div>
+                                        <?php } else { ?>
+                                            <?php $this->load->view('includes/no_result'); ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

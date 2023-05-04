@@ -78,6 +78,11 @@
                                     <i class="ri-book-mark-line"></i> <span data-key="t-widgets">Book / Article</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link <?php echo strpos(current_url(),'conference') !== false ? 'active' : ''; ?>" href="<?php echo base_url('admin/conference/list'); ?>">
+                                    <i class="ri-account-pin-box-fill"></i> <span data-key="t-widgets">Conference Proceedings</span>
+                                </a>
+                            </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'admin/image') !== false || strpos(url()->current(),'admin/audio') !== false || strpos(url()->current(),'admin/video') !== false || strpos(url()->current(),'admin/document') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">

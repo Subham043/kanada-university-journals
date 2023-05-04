@@ -106,14 +106,21 @@
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-xxl-6 col-md-6">
+                                                <div class="col-xxl-4 col-md-4">
+                                                    <div class="form-group mb-3">
+                                                        <label for="department_id" class="form-label"><?php echo $page_name; ?> Department</label>
+                                                        <select class="form-control" id="department_id" name="department_id"></select>
+                                                        <i class="invalid-message error"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xxl-4 col-md-4">
                                                     <div class="form-group mb-3">
                                                         <label for="teacher_id" class="form-label"><?php echo $page_name; ?> Teacher</label>
                                                         <select class="form-control" id="teacher_id" name="teacher_id"></select>
                                                         <i class="invalid-message error"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-xxl-6 col-md-6">
+                                                <div class="col-xxl-4 col-md-4">
                                                     <div class="form-group mb-3">
                                                         <label for="keyword_id" class="form-label"><?php echo $page_name; ?> Keyword</label>
                                                         <select class="form-control" id="keyword_id" name="keyword_id"></select>
@@ -224,6 +231,9 @@
                         abstract: {
                             required: true
                         },
+                        department_id: {
+                            required: true,
+                        },
                     },
                     submitHandler: function(form) {
                         var submitBtn = document.getElementById('submitBtn')
@@ -296,6 +306,24 @@
                 <?php } ?>
             ],
             placeholderValue: 'Select a keyword',
+            ...CHOICE_CONFIG
+        });
+        const departmentChoice = new Choices('#department_id', {
+            choices: [
+                {
+                    value: '',
+                    label: 'Select a department',
+                    selected: true,
+                    disabled: true,
+                },
+                <?php foreach($department as $department){ ?>
+                    {
+                        value: '<?php echo $department->id; ?>',
+                        label: '<?php echo $department->name; ?> ~ <?php echo $department->code; ?>',
+                    },
+                <?php } ?>
+            ],
+            placeholderValue: 'Select a department',
             ...CHOICE_CONFIG
         });
 
