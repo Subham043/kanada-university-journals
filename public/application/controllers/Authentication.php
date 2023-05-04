@@ -46,9 +46,12 @@ class Authentication extends CI_Controller {
                 if (!empty($data['login']['id'])) {
                     $id = $data['login']['id'];
                 }
-                $session_data = array('admin_id' => $id);
+                if (!empty($data['login']['userType'])) {
+                    $userType = $data['login']['userType'];
+                }
+                $session_data = array('admin_id' => $id, 'user_type' => $userType);
                 $this->session->set_userdata($session_data);
-                redirect('profile');
+                redirect('/');
                
             } else {
                 $this->session->set_flashdata('error', 'Invalid Email or Password');

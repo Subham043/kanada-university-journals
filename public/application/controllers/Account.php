@@ -9,7 +9,7 @@ class Account extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Oops you need to be logged in order to access the page!'); redirect('login'); }
+        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Oops you need to be logged in order to access the page!'); redirect('teacher'); }
     
         $this->load->model('m_account');
         $this->load->library('form_validation');
@@ -159,7 +159,7 @@ class Account extends CI_Controller {
         $this->session->unset_userdata($session_data);
         $this->session->sess_destroy();
         $this->session->set_flashdata('logout', 'You are logged out Successfully');
-        redirect('login');
+        redirect('teacher');
     }
 
 

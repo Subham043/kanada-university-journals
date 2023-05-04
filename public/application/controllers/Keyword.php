@@ -9,7 +9,7 @@ class Keyword extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('admin_id') == '') {$this->session->set_flashdata('error', 'Oops you need to be logged in order to access the page!'); redirect('login'); }
+        if ($this->session->userdata('admin_id') == '' || $this->session->userdata('user_type') == 2) {$this->session->set_flashdata('error', 'Oops you need to be logged in order to access the page!'); redirect('dashboard'); }
     
         $this->load->model('m_keyword');
         $this->load->library('form_validation');

@@ -9,9 +9,11 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-        <?php $this->load->view('includes/header'); ?>
 
-        <?php $this->load->view('includes/menu'); ?>
+
+        <?php ($this->session->userdata('admin_id') == '' || $this->session->userdata('user_type') == 2) ? $this->load->view('includes/user-header') : $this->load->view('includes/header'); ?>
+
+        <?php ($this->session->userdata('admin_id') == '' || $this->session->userdata('user_type') == 2) ? $this->load->view('includes/user-menu') : $this->load->view('includes/menu'); ?>
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->

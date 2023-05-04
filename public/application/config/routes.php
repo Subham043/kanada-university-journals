@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Authentication';
+$route['default_controller'] = 'Dashboard';
 
 $route['404_override'] = '';
 
@@ -70,13 +70,16 @@ $route['forgot-password'] = 'Authentication/forgot_password'; //forgot password 
 $route['reset-password/(:any)'] = 'Authentication/reset_password/$1'; //forgot password email check
 
 //change password
-$route['dashboard'] = 'Account/dashboard'; //open dashboard
+// $route['dashboard'] = 'Account/dashboard'; //open dashboard
 
 $route['profile'] = 'Account/profile'; //forgot password email click
 
 $route['profile-change'] = 'Account/profile_update'; //forgot password email click
 $route['password-change'] = 'Account/password_update'; //forgot password email click
 $route['logout'] = 'Account/logout'; //logout
+
+$route['/'] = 'Dashboard/index'; //logout
+$route['dashboard'] = 'Dashboard/index'; //logout
 
 //department
 $route['admin/department/create'] = 'Department/create'; //open dashboard

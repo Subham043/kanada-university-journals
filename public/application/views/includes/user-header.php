@@ -51,30 +51,33 @@
                     </button>
                 </div>
 
-
-                <!-- <div class="dropdown ms-sm-3 header-item topbar-user">
-                    <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user"
-                                src="<?php echo base_url('assets/admin/images/avatar.png'); ?>" alt="Header Avatar">
-                            <span class="text-start ms-xl-2">
-                                <span
-                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Admin</span>
+                <?php if($this->session->userdata('admin_id') == ''){ ?>
+                    <a type="button" href="<?php echo base_url('login'); ?>" class="btn btn-success btn-label"><i class="ri-shield-user-line label-icon align-middle fs-16 me-2"></i> Login</a>
+                <?php }else{ ?>
+                    <div class="dropdown ms-sm-3 header-item topbar-user">
+                        <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span class="d-flex align-items-center">
+                                <img class="rounded-circle header-profile-user"
+                                    src="<?php echo base_url('assets/admin/images/avatar.png'); ?>" alt="Header Avatar">
+                                <span class="text-start ms-xl-2">
+                                    <span
+                                        class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">User</span>
+                                </span>
                             </span>
-                        </span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <h6 class="dropdown-header">Welcome Admin!</h6>
-                        <a class="dropdown-item" href="<?php echo base_url('profile'); ?>"><i
-                                class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle">Profile</span></a>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <h6 class="dropdown-header">Welcome User!</h6>
+                            <a class="dropdown-item" href="<?php echo base_url('profile'); ?>"><i
+                                    class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                    class="align-middle">Profile</span></a>
 
-                        <a class="dropdown-item" href="<?php echo base_url('logout'); ?>"><i
-                                class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></a>
+                            <a class="dropdown-item" href="<?php echo base_url('logout'); ?>"><i
+                                    class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                    class="align-middle" data-key="t-logout">Logout</span></a>
+                        </div>
                     </div>
-                </div> -->
+                <?php } ?>
             </div>
         </div>
     </div>

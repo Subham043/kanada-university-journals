@@ -4,7 +4,7 @@
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
                     <!-- Dark Logo-->
-                    <a href="<?php echo base_url('profile'); ?>" class="logo logo-dark">
+                    <a href="<?php echo base_url(); ?>" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="<?php echo base_url('assets/admin/images/logo.png'); ?>" alt="" height="22">
                         </span>
@@ -13,7 +13,7 @@
                         </span>
                     </a>
                     <!-- Light Logo-->
-                    <a href="<?php echo base_url('profile'); ?>" class="logo logo-light">
+                    <a href="<?php echo base_url(); ?>" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="<?php echo base_url('assets/admin/images/logo.png'); ?>" alt="" height="30">
                         </span>
